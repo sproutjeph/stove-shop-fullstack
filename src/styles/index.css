@@ -1,0 +1,9 @@
+@import "./_tailwind.css";
+
+@import "./_thirdParty.css";
+@import "./_global.css";
+@import "./_colors.css";
+@import "./_login.css";
+@import "./_custom.css";
+@import "./_content.css";
+@import "./_table-report.css";
