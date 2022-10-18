@@ -17,7 +17,9 @@ const ProductList = () => {
                 <th className="text-center whitespace-nowrap">Product ID</th>
                 <th className="text-center whitespace-nowrap">Part Number</th>
                 <th className="text-center whitespace-nowrap">Product Price</th>
-                <th className="text-center whitespace-nowrap">Price</th>
+                <th className="text-center whitespace-nowrap">
+                  Default Currency
+                </th>
                 <th className="text-center whitespace-nowrap">Add Product</th>
               </tr>
             </thead>
@@ -32,7 +34,7 @@ const ProductList = () => {
                   <td className="text-center">{product.productId}</td>
                   <td className="text-center ">{product.PartNumber}</td>
                   <td className="text-center ">{product.productPrice}</td>
-                  <td className="text-center ">item_price</td>
+                  <td className="text-center ">USD</td>
 
                   <td className="">
                     <div className="justify-center form-check form-switch">
