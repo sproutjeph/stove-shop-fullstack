@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import cartReducer from "../featuers/cart/cartSlice";
 import authReducer from "../featuers/auth/authSlice";
+import modalReducer from "../featuers/modal/modalSlice";
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
     auth: authReducer,
+    modal: modalReducer,
   },
 });
 

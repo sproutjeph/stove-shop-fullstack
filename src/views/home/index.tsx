@@ -16,25 +16,31 @@ import {
   GiftIcon,
   RocketLaunchIcon,
 } from "@heroicons/react/24/outline";
+import { useAppDispatch, useAppSelector } from "../../stores/hooks";
+import {
+  openBasicPricingModal,
+  openProPricingModal,
+  openUltimatePricingModal,
+} from "../../featuers/modal/modalSlice";
 
 const HomePage = () => {
   const navigateTo = useNavigate();
   const [showCountertopKit, setShowCountertopKit] = useState(true);
   const [showHandheldKit, setShowHandheldKit] = useState(false);
   const [showGuestServiceKit, setShowGuestServiceKit] = useState(false);
+  const dispatch = useAppDispatch();
 
   return (
     <>
       <div className="">
         <h2 className="text-center text-2xl mt-6">
-          Chose The Right Plan For You Resturant{" "}
+          Chose The Right Plan For Your Resturant{" "}
         </h2>
 
-        <div className="p-8 intro-y">
-          {/* <h2 className="text-center text-2xl mb-8">Pricing </h2> */}
+        <div className="p-8">
           <div className="grid md:grid-cols-3 gap-4">
             {/* Begin: Basic Starter  */}
-            <div className="box pl-8 py-4">
+            <div className="bg-white rounded-md pl-8 py-4 ">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <TrophyIcon className="h-14 w-14" />
               </div>
@@ -45,7 +51,7 @@ const HomePage = () => {
 
               <button
                 className="btn btn-primary shadow-md mt-5 text-sm tracking-widest"
-                onClick={() => navigateTo("/pricing")}
+                onClick={() => dispatch(openBasicPricingModal())}
               >
                 Details
               </button>
@@ -53,7 +59,7 @@ const HomePage = () => {
             {/* End: Basic Starter  */}
 
             {/* Begin: Ultimate Starter  */}
-            <div className="box pl-8 py-4">
+            <div className="bg-white rounded-md pl-8 py-4">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <GiftIcon className="h-14 w-14" />
               </div>
@@ -64,7 +70,7 @@ const HomePage = () => {
 
               <button
                 className="btn btn-primary shadow-md mt-5 text-sm tracking-widest"
-                onClick={() => navigateTo("/pricing")}
+                onClick={() => dispatch(openUltimatePricingModal())}
               >
                 Details
               </button>
@@ -72,7 +78,7 @@ const HomePage = () => {
             {/* END: Ultimate Starter  */}
 
             {/* Begin: Professional Starter  */}
-            <div className="box pl-8 py-4">
+            <div className="bg-white rounded-md pl-8 py-4">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <RocketLaunchIcon className="h-14 w-14" />
               </div>
@@ -83,7 +89,7 @@ const HomePage = () => {
 
               <button
                 className="btn btn-primary shadow-md mt-5 text-sm tracking-widest"
-                onClick={() => navigateTo("/pricing")}
+                onClick={() => dispatch(openProPricingModal())}
               >
                 Details
               </button>
@@ -117,7 +123,7 @@ const HomePage = () => {
         <div className="text-2xl mt-8 md:mt-0">
           <h2 className="text-center">Stove Starter Kits </h2>
 
-          <div className="intro-x box flex p-4 mt-6 justify-between items-center">
+          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
             <ComputerDesktopIcon className="h-12 w-12" />
             <div>CounterTopKit</div>
 
@@ -135,7 +141,7 @@ const HomePage = () => {
               />
             </div>
           </div>
-          <div className="intro-x box flex p-4 mt-6 justify-between items-center">
+          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
             <DevicePhoneMobileIcon className="w-12 h-12" />
             <div>HandHeldKit</div>
 
@@ -153,7 +159,7 @@ const HomePage = () => {
               />
             </div>
           </div>
-          <div className="intro-x box flex p-4 mt-6 justify-between items-center">
+          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
             <UserGroupIcon className="h-12 w-12" />
             <div>Guest Self-Service Kit</div>
             <div className=" form-check form-switch">

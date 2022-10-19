@@ -6,14 +6,14 @@ import axios from "axios";
 const url = "https://course-api.com/react-useReducer-cart-project";
 
 export interface CartState {
-  isCartOpen: boolean;
+  isCartModalOpen: boolean;
   cartItems: CartItem[];
   amount: number;
   total: number;
 }
 
 const initialState: CartState = {
-  isCartOpen: false,
+  isCartModalOpen: false,
   cartItems: data,
   amount: 0,
   total: 0,
@@ -31,11 +31,11 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    openCart: (cartState) => {
-      cartState.isCartOpen = true;
+    openCartModal: (cartState) => {
+      cartState.isCartModalOpen = true;
     },
-    closeCart: (cartState) => {
-      cartState.isCartOpen = false;
+    closeCartModal: (cartState) => {
+      cartState.isCartModalOpen = false;
     },
     increament: (cartState) => {
       cartState.amount += 1;
@@ -65,8 +65,8 @@ export const {
   increament,
   incrementByAmount,
   clearCart,
-  closeCart,
-  openCart,
+  closeCartModal,
+  openCartModal,
 } = cartSlice.actions;
 export const selectCartState = (state: RootState) => state.cart;
 // export const selectCartItems = (state: RootState) => state.cart.cartItems;

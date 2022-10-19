@@ -5,19 +5,8 @@ import {
   GiftIcon,
   RocketLaunchIcon,
 } from "@heroicons/react/24/outline";
+import { basicItems } from "../../utils/data";
 const PricingPage = () => {
-  const basicItems = [
-    "Cloud Based POS",
-    "Full Reporting",
-    " Employee Time Tracking",
-    "Scheduling",
-    "Online Ordering (+25/mo)",
-    " Payroll (+35/mo)",
-    " Kiosk Ordering (+35/mo)",
-    "Gift Cards ($20/mo)",
-    "eservations+ (+35/mo)",
-    " KDS (+$15/mo)",
-  ];
   return (
     <>
       <div className="p-8">

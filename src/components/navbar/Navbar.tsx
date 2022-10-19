@@ -9,11 +9,12 @@ import logoUrl from "@/assets/images/logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import { logout } from "../../featuers/auth/authSlice";
+import { openCartModal } from "../../featuers/cart/cartSlice";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
-  const navigateTo = useNavigate();
   const { isSuccess } = useAppSelector((state) => state.auth);
+  const navigateTo = useNavigate();
 
   const user = {
     name: "Arron M",
@@ -84,7 +85,7 @@ const Navbar = () => {
                         <ShoppingCartIcon
                           className="h-8 w-8"
                           aria-hidden="true"
-                          onClick={() => navigateTo("/cart")}
+                          onClick={() => dispatch(openCartModal())}
                         />
                         <span className="inline-block absolute w-5 h-5 rounded-full right-[-9px] top-[-6px] bg-white text-primary  items-center ">
                           0
@@ -133,7 +134,7 @@ const Navbar = () => {
                       </Menu>
                     </div>
                   </div>
-                  <div className="-mr-2 flex md:hidden ">
+                  <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-slate-900 hover:bg-gray-200">
                       <span className="sr-only">Open main menu</span>
@@ -194,6 +195,7 @@ const Navbar = () => {
                       <ShoppingCartIcon
                         className="h-10 w-10"
                         aria-hidden="true"
+                        onClick={() => dispatch(openCartModal())}
                       />
                       <span className="inline-block absolute w-5 h-5 rounded-full right-[-9px] top-[-6px] bg-white text-primary  items-center ">
                         0

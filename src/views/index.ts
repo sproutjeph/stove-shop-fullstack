@@ -4,3 +4,7 @@ export { default as AuthPage } from "./auth";
 export { default as ErrorPage } from "./errorPage";
 export { default as CounterExample } from "./counterExample";
 export { default as CartPage } from "./cart/CartPage";
+export { default as CartModal } from "./cart/CartModal";
+export { default as BasicPricingModal } from "./pricing/modals/BasicPricingModal";
+export { default as UltimatePricingModal } from "./pricing/modals/UltimatePricingModal";
+export { default as ProfessionalPricingModal } from "./pricing/modals/ProfessionalPricingModal";
