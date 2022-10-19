@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IUserRegData } from "../types";
+import { IUserRegData } from "../utils/types";
 
 const API_URL = "http://localhost:8000/api/v1/auth";
 
