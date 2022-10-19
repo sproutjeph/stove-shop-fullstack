@@ -1,6 +1,11 @@
-import React from "react";
+import { useSearchParams } from "react-router-dom";
 import { ProductData } from "../../utils/data";
+import { useNavigate } from "react-router-dom";
 const ProductList = () => {
+  const navigateTo = useNavigate();
+  const [params, setParams] = useSearchParams();
+  console.log(params.get("productId"));
+
   return (
     <section className="h-screen" id="product">
       <div className="">
@@ -27,7 +32,16 @@ const ProductList = () => {
               {ProductData.map((product, index) => (
                 <tr key={product.PartNumber + index} className="intro-x">
                   <td className="">
-                    <button className="font-medium whitespace-nowrap">
+                    <button
+                      className="font-medium whitespace-nowrap"
+                      onClick={() => {
+                        setParams({
+                          ...params,
+                          productId: `${product.productId}`,
+                        });
+                        navigateTo("/product-details");
+                      }}
+                    >
                       {product.productName}
                     </button>
                   </td>
@@ -43,10 +57,9 @@ const ProductList = () => {
                         className="form-check-input"
                         type="checkbox"
                         checked={false}
-                        // onChange={(e) => {
-                        //   console.log(e.target.checked);
-                        //   onActiveChange(e, menuItem);
-                        // }}
+                        onChange={(e: any) => {
+                          console.log(e.target.checked);
+                        }}
                       />
                     </div>
                   </td>
