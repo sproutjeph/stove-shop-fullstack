@@ -1,12 +1,5 @@
-import { useRoutes, Routes, Route } from "react-router-dom";
-import {
-  CounterExample,
-  ErrorPage,
-  HomePage,
-  AuthPage,
-  PricingPage,
-  CartPage,
-} from "../views";
+import { Routes, Route } from "react-router-dom";
+import { ErrorPage, HomePage, AuthPage, PricingPage, CartPage } from "../views";
 
 function Router() {
   return (

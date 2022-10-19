@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import { register, reset } from "../../featuers/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { IUserRegData } from "../../types";
+import { IUserRegData } from "../../utils/types";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {

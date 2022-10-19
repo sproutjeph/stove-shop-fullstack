@@ -7,7 +7,6 @@ import {
 import counterTopKit from "@/assets/images/counter-top-kit.jpg";
 import handheldKit from "@/assets/images/gest-service-kit-2.jpg";
 import guestServiceKit from "@/assets/images/guest-service-kit.jpg";
-import { useNavigate } from "react-router-dom";
 import {
   DevicePhoneMobileIcon,
   ComputerDesktopIcon,
@@ -16,7 +15,7 @@ import {
   GiftIcon,
   RocketLaunchIcon,
 } from "@heroicons/react/24/outline";
-import { useAppDispatch, useAppSelector } from "../../stores/hooks";
+import { useAppDispatch } from "../../stores/hooks";
 import {
   openBasicPricingModal,
   openProPricingModal,
@@ -24,7 +23,6 @@ import {
 } from "../../featuers/modal/modalSlice";
 
 const HomePage = () => {
-  const navigateTo = useNavigate();
   const [showCountertopKit, setShowCountertopKit] = useState(true);
   const [showHandheldKit, setShowHandheldKit] = useState(false);
   const [showGuestServiceKit, setShowGuestServiceKit] = useState(false);
