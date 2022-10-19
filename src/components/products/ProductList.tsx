@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ProductList = () => {
   const navigateTo = useNavigate();
   const [params, setParams] = useSearchParams();
-  console.log(params.get("productId"));
+  // console.log(params.get("productId"));
 
   return (
     <section className="h-screen" id="product">
@@ -58,7 +58,7 @@ const ProductList = () => {
                         type="checkbox"
                         checked={false}
                         onChange={(e: any) => {
-                          console.log(e.target.checked);
+                          // console.log(e.target.checked);
                         }}
                       />
                     </div>

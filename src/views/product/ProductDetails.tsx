@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ProductData } from "../../utils/data";
 import { StarIcon, PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
-
+import { useNavigate } from "react-router-dom";
 import counterTopKit from "@/assets/images/counter-top-kit.jpg";
 
 interface IProps {
@@ -10,6 +10,7 @@ interface IProps {
 }
 
 const ProductDetails = () => {
+  const navigateTo = useNavigate();
   // const [params, setParams] = useSearchParams();
   const [productId, setProductId] = useState("153bd7ae");
   const [quantity, setQuantity] = useState(0);
@@ -63,8 +64,11 @@ const ProductDetails = () => {
                 <PlusIcon className="w-6 h-6" />
               </button>
             </div>
-            <button className="btn btn-primary tracking-widest mt-4 w-44">
-              Add to Kit
+            <button
+              className="btn btn-primary tracking-widest mt-4 w-44"
+              onClick={() => navigateTo("/cart")}
+            >
+              Add to Cart
             </button>
           </div>
         </div>

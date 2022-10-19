@@ -7,13 +7,11 @@ import {
 } from "@heroicons/react/24/outline";
 import logoUrl from "@/assets/images/logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../stores/hooks";
+import { useAppDispatch } from "../../stores/hooks";
 import { logout } from "../../featuers/auth/authSlice";
-import { openCartModal } from "../../featuers/cart/cartSlice";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
-  const { isSuccess } = useAppSelector((state) => state.auth);
   const navigateTo = useNavigate();
 
   const user = {
@@ -85,10 +83,10 @@ const Navbar = () => {
                         <ShoppingCartIcon
                           className="h-8 w-8"
                           aria-hidden="true"
-                          onClick={() => dispatch(openCartModal())}
+                          onClick={() => navigateTo("/cart")}
                         />
                         <span className="inline-block absolute w-5 h-5 rounded-full right-[-9px] top-[-6px] bg-white text-primary  items-center ">
-                          0
+                          1
                         </span>
                       </button>
 
@@ -195,10 +193,10 @@ const Navbar = () => {
                       <ShoppingCartIcon
                         className="h-10 w-10"
                         aria-hidden="true"
-                        onClick={() => dispatch(openCartModal())}
+                        onClick={() => navigateTo("/cart")}
                       />
                       <span className="inline-block absolute w-5 h-5 rounded-full right-[-9px] top-[-6px] bg-white text-primary  items-center ">
-                        0
+                        1
                       </span>
                     </button>
                   </div>
