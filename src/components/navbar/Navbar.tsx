@@ -22,7 +22,7 @@ const Navbar = () => {
   };
   const navigation = [
     { name: "Products", path: "/" },
-    { name: "Pricing", path: "pricing" },
+    { name: "Pricing", path: "/pricing" },
     { name: "Solution", path: "/" },
     { name: "Resturant Type", path: "/" },
     { name: "Company", path: "/" },

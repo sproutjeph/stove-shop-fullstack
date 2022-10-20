@@ -12,7 +12,7 @@ const PricingPage = () => {
         {/* <h2 className="text-center text-2xl mb-8">Pricing </h2> */}
         <div className="grid md:grid-cols-3 gap-4">
           {/* Begin: Basic Starter  */}
-          <div className="box pl-8 py-4">
+          <div className="bg-white pl-8 py-4 rounded-md">
             <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
               <TrophyIcon className="h-14 w-14" />
             </div>

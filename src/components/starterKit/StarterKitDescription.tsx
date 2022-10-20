@@ -12,9 +12,7 @@ const StarterKitDescription = ({
   return (
     <>
       <div className="">
-        <h2 className="text-sm font-medium  max-w-md mt-5">
-          {descriptionHeader}
-        </h2>
+        {/* <h2 className="text-sm font-medium  max-w-md">{descriptionHeader}</h2> */}
 
         <h2 className="text-md font-medium  max-w-md mt-5">Kit Includes</h2>
         <ul className="text-sm mt-4 flex flex-col gap-4">

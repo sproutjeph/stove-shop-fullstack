@@ -25,6 +25,7 @@ const ProductList = () => {
                 <th className="text-center whitespace-nowrap">
                   Default Currency
                 </th>
+                <th className="text-center whitespace-nowrap">QTY</th>
                 <th className="text-center whitespace-nowrap">Add Product</th>
               </tr>
             </thead>
@@ -50,6 +51,18 @@ const ProductList = () => {
                   <td className="text-center ">{product.productPrice}</td>
                   <td className="text-center ">USD</td>
 
+                  <td className="text-center">
+                    <input
+                      id=""
+                      className="form-control outline-none w-20"
+                      type="number"
+                      step={1}
+                      min={1}
+                      onChange={(e: any) => {
+                        // console.log(e.target.checked);
+                      }}
+                    />
+                  </td>
                   <td className="">
                     <div className="justify-center form-check form-switch">
                       <input
