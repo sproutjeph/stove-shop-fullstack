@@ -47,118 +47,123 @@ const HomePage = () => {
         </h2>
 
         {/* Begin: All Starters  */}
-        <div className="p-8">
-          <div className="grid md:grid-cols-3 gap-4">
-            {/* Begin: Basic Starter  */}
-            <div className="bg-white rounded-md px-8 py-4 relative">
+        <div className="p-8 grid md:grid-cols-3 gap-4">
+          {/* Begin: Basic Starter  */}
+          <div className="bg-white rounded-md px-8 py-4">
+            <div className="flex">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <TrophyIcon className="h-14 w-14" />
               </div>
+
               {isActivated.basic && (
-                <CheckBadgeIcon className="h-6 w-6 absolute top-4 right-4 text-warning" />
+                <CheckBadgeIcon className="h-6 w-6   text-warning ml-auto" />
               )}
-              <h2 className="text-xl text-black my-3">Basic Starter</h2>
-              <h2 className="text-3xl text-primary my-3">
-                $50<span className="text-sm">/ month</span>
-              </h2>
-              <div className="flex justify-between">
-                <button
-                  className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
-                  onClick={() => dispatch(openBasicPricingModal())}
-                >
-                  Details
-                </button>
-
-                <button
-                  className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
-                  onClick={() =>
-                    setIsActivated({
-                      ...isActivated,
-                      basic: !isActivated.basic,
-                      pro: false,
-                      ultimate: false,
-                    })
-                  }
-                >
-                  {isActivated.basic ? "Activated" : "Activate"}
-                </button>
-              </div>
             </div>
-            {/* End: Basic Starter  */}
+            <h2 className="text-xl text-black my-3">Basic Starter</h2>
+            <h2 className="text-3xl text-primary my-3">
+              $50<span className="text-sm">/ month</span>
+            </h2>
+            <div className="flex justify-between">
+              <button
+                className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
+                onClick={() => dispatch(openBasicPricingModal())}
+              >
+                Details
+              </button>
 
-            {/* Begin: Ultimate Starter  */}
-            <div className="bg-white rounded-md px-8 py-4 relative">
+              <button
+                className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
+                onClick={() =>
+                  setIsActivated({
+                    ...isActivated,
+                    basic: !isActivated.basic,
+                    pro: false,
+                    ultimate: false,
+                  })
+                }
+              >
+                {isActivated.basic ? "Activated" : "Activate"}
+              </button>
+            </div>
+          </div>
+          {/* End: Basic Starter  */}
+
+          {/* Begin: Ultimate Starter  */}
+          <div className="bg-white rounded-md px-8 py-4">
+            <div className="flex">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <GiftIcon className="h-14 w-14" />
               </div>
               {isActivated.ultimate && (
-                <CheckBadgeIcon className="h-6 w-6 absolute top-4 right-4 text-warning" />
+                <CheckBadgeIcon className="h-6 w-6  text-warning ml-auto" />
               )}
-              <h2 className="text-xl text-black my-3">Ultimate</h2>
-              <h2 className="text-3xl text-primary my-3">
-                $139<span className="text-sm">/ month</span>
-              </h2>
-              <div className="flex justify-between">
-                <button
-                  className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
-                  onClick={() => dispatch(openUltimatePricingModal())}
-                >
-                  Details
-                </button>
-                <button
-                  className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
-                  onClick={() =>
-                    setIsActivated({
-                      ...isActivated,
-                      ultimate: !isActivated.ultimate,
-                      basic: false,
-                      pro: false,
-                    })
-                  }
-                >
-                  {isActivated.ultimate ? "Activated" : "Activate"}
-                </button>
-              </div>
             </div>
-            {/* END: Ultimate Starter  */}
+            <h2 className="text-xl text-black my-3">Ultimate</h2>
+            <h2 className="text-3xl text-primary my-3">
+              $139<span className="text-sm">/ month</span>
+            </h2>
+            <div className="flex justify-between">
+              <button
+                className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
+                onClick={() => dispatch(openUltimatePricingModal())}
+              >
+                Details
+              </button>
+              <button
+                className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
+                onClick={() =>
+                  setIsActivated({
+                    ...isActivated,
+                    ultimate: !isActivated.ultimate,
+                    basic: false,
+                    pro: false,
+                  })
+                }
+              >
+                {isActivated.ultimate ? "Activated" : "Activate"}
+              </button>
+            </div>
+          </div>
+          {/* END: Ultimate Starter  */}
 
-            {/* Begin: Professional Starter  */}
-            <div className="bg-white rounded-md px-8 py-4 relative">
+          {/* Begin: Professional Starter  */}
+          <div className="bg-white rounded-md px-8 py-4">
+            <div className="flex">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <RocketLaunchIcon className="h-14 w-14" />
               </div>
               {isActivated.pro && (
-                <CheckBadgeIcon className="h-6 w-6 absolute top-4 right-4 text-warning" />
+                <CheckBadgeIcon className="h-6 w-6 ml-auto text-warning" />
               )}
-              <h2 className="text-xl text-black my-3">Professional</h2>
-              <h2 className="text-3xl text-primary my-3">
-                $199<span className="text-sm">/ month</span>
-              </h2>
-
-              <div className="flex justify-between">
-                <button
-                  className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
-                  onClick={() => dispatch(openProPricingModal())}
-                >
-                  Details
-                </button>
-                <button
-                  className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
-                  onClick={() =>
-                    setIsActivated({
-                      ...isActivated,
-                      pro: !isActivated.pro,
-                      ultimate: false,
-                      basic: false,
-                    })
-                  }
-                >
-                  {isActivated.pro ? "Activated" : "Activate"}
-                </button>
-              </div>
             </div>
-            {/* END: Professional Starter  */}
+            <h2 className="text-xl text-black my-3">Professional</h2>
+            <h2 className="text-3xl text-primary my-3">
+              $199<span className="text-sm">/ month</span>
+            </h2>
+
+            <div className="flex justify-between">
+              <button
+                className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
+                onClick={() => dispatch(openProPricingModal())}
+              >
+                Details
+              </button>
+              <button
+                className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
+                onClick={() =>
+                  setIsActivated({
+                    ...isActivated,
+                    pro: !isActivated.pro,
+                    ultimate: false,
+                    basic: false,
+                  })
+                }
+              >
+                {isActivated.pro ? "Activated" : "Activate"}
+              </button>
+            </div>
           </div>
+          {/* END: Professional Starter  */}
         </div>
         {/* END: All Starters  */}
       </div>
