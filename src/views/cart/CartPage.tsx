@@ -5,7 +5,7 @@ import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const CartPage = () => {
   const navigateTo = useNavigate();
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <>

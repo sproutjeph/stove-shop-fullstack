@@ -1,6 +1,13 @@
 import { useSearchParams } from "react-router-dom";
 import { ProductData } from "../../utils/data";
 import { useNavigate } from "react-router-dom";
+import {
+  ChevronLeftIcon,
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
+
 const ProductList = () => {
   const navigateTo = useNavigate();
   const [params, setParams] = useSearchParams();
@@ -82,6 +89,66 @@ const ProductList = () => {
           </table>
         </div>
       </div>
+
+      {/* BEGIN: Pagination -*/}
+      <div className="flex flex-wrap items-center col-span-12 intro-y sm:flex-row sm:flex-nowrap px-8">
+        <nav className="w-full sm:w-auto sm:mr-auto">
+          <ul className="pagination">
+            <li className="page-item">
+              <a className="page-link" href="#">
+                <ChevronDoubleLeftIcon className="w-4 h-4" />
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                <ChevronLeftIcon className="w-4 h-4" />
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                ...
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                1
+              </a>
+            </li>
+            <li className="page-item active">
+              <a className="page-link" href="#">
+                2
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                3
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                ...
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                <ChevronRightIcon className="w-4 h-4" />
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                <ChevronDoubleRightIcon className="w-4 h-4" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <select className="w-20 mt-3 form-select box sm:mt-0">
+          <option>10</option>
+          <option>25</option>
+          <option>35</option>
+          <option>50</option>
+        </select>
+      </div>
+      {/* END: Pagination -*/}
     </section>
   );
 };

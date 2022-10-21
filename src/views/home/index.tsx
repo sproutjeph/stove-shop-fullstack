@@ -25,19 +25,27 @@ import {
 } from "../../featuers/modal/modalSlice";
 
 const HomePage = () => {
-  const [showCountertopKit, setShowCountertopKit] = useState(true);
-  const [showHandheldKit, setShowHandheldKit] = useState(false);
-  const [showGuestServiceKit, setShowGuestServiceKit] = useState(false);
-  const [showCounterOnlyKit, setShowCounterOnlyKit] = useState(false);
-  const [showTableKit, setShowTableKit] = useState(false);
-
+  const navigateTo = useNavigate();
   const dispatch = useAppDispatch();
+  // const [showCountertopKit, setShowCountertopKit] = useState(true);
+  // const [showHandheldKit, setShowHandheldKit] = useState(false);
+  // const [showGuestServiceKit, setShowGuestServiceKit] = useState(false);
+  // const [showCounterOnlyKit, setShowCounterOnlyKit] = useState(false);
+  // const [showTableKit, setShowTableKit] = useState(false);
+
+  const [showKit, setShowkit] = useState({
+    showCountertopKit: true,
+    showCounterCustomerKit: false,
+    showGuestServiceKit: false,
+    showCounterOnlyKit: false,
+    showTableKit: false,
+  });
+
   const [isActivated, setIsActivated] = useState({
     basic: false,
     ultimate: false,
     pro: false,
   });
-  const navigateTo = useNavigate();
 
   return (
     <>
@@ -171,7 +179,7 @@ const HomePage = () => {
       {/* Begin: Starters Image  */}
       <div className="p-8 grid md:grid-cols-2 justify-center gap-8">
         <div className="">
-          {showCountertopKit && (
+          {showKit.showCountertopKit && (
             <StarterKit
               kitImg={counterTopKit}
               kitMessage="With STOVE your restaurant is always right at your fingertips,
@@ -179,13 +187,25 @@ const HomePage = () => {
               you are!"
             />
           )}
-          {showHandheldKit && (
+          {showKit.showCounterCustomerKit && (
             <StarterKit
               kitImg={handheldKit}
               kitMessage="Ensuring your guests a seamless and timely dining experience each and every time can be a challenge, but with STOVE you get endless options to tackle even the toughest of guests."
             />
           )}
-          {showGuestServiceKit && (
+          {showKit.showGuestServiceKit && (
+            <StarterKit
+              kitImg={guestServiceKit}
+              kitMessage="STOVE allows your staff and restaurant to better engage with your guests, while ensuring that your system is robust and powerful to support every aspect of your restaurant on your hours. "
+            />
+          )}
+          {showKit.showCounterOnlyKit && (
+            <StarterKit
+              kitImg={guestServiceKit}
+              kitMessage="STOVE allows your staff and restaurant to better engage with your guests, while ensuring that your system is robust and powerful to support every aspect of your restaurant on your hours. "
+            />
+          )}
+          {showKit.showTableKit && (
             <StarterKit
               kitImg={guestServiceKit}
               kitMessage="STOVE allows your staff and restaurant to better engage with your guests, while ensuring that your system is robust and powerful to support every aspect of your restaurant on your hours. "
@@ -194,7 +214,7 @@ const HomePage = () => {
 
           {/* Begin: CounterTopKit Description */}
           <div className="">
-            {showCountertopKit && (
+            {showKit.showCounterOnlyKit && (
               <StarterKitDescription
                 descriptionHeader="Point of Sale that is more than just a POS. Join the revolution and
           experience STOVE’s all in one platform that can streamline your
@@ -212,7 +232,7 @@ const HomePage = () => {
             {/* END: CounterTopKit Description */}
 
             {/* Begin: handheldKit Description */}
-            {showHandheldKit && (
+            {showKit.showTableKit && (
               <StarterKitDescription
                 descriptionHeader="Whether you're fulfilling orders in the dining room, opening your patio, or hitting the road, the next generation of Stove handheld POS is ready."
                 descriptionItems={[
@@ -228,7 +248,7 @@ const HomePage = () => {
             {/* END: handheldKit Description */}
 
             {/* Begin: Guest service kit Description */}
-            {showGuestServiceKit && (
+            {showKit.showCountertopKit && (
               <StarterKitDescription
                 descriptionHeader="Enhance your guests experience as soon as they walk through the door. STOVE’s modern form
 of labor is here to stay, add self ordering kiosks to your quick service, fast casual, café or bakery, or any enterprise today!"
@@ -258,12 +278,17 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
                 id="product-status-active"
                 className="form-check-input"
                 type="checkbox"
-                checked={showCountertopKit}
-                onChange={() => {
-                  setShowCountertopKit(true);
-                  setShowHandheldKit(false);
-                  setShowGuestServiceKit(false);
-                }}
+                checked={showKit.showCountertopKit}
+                onChange={() =>
+                  setShowkit({
+                    ...showKit,
+                    showCountertopKit: true,
+                    showCounterCustomerKit: false,
+                    showGuestServiceKit: false,
+                    showCounterOnlyKit: false,
+                    showTableKit: false,
+                  })
+                }
               />
             </div>
           </div>
@@ -276,11 +301,16 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
                 id="product-status-active"
                 className="form-check-input"
                 type="checkbox"
-                checked={showHandheldKit}
+                checked={showKit.showCounterCustomerKit}
                 onChange={() => {
-                  setShowHandheldKit(true);
-                  setShowCountertopKit(false);
-                  setShowGuestServiceKit(false);
+                  setShowkit({
+                    ...showKit,
+                    showCounterCustomerKit: true,
+                    showCountertopKit: false,
+                    showGuestServiceKit: false,
+                    showCounterOnlyKit: false,
+                    showTableKit: false,
+                  });
                 }}
               />
             </div>
@@ -293,12 +323,16 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
                 id="product-status-active"
                 className="form-check-input"
                 type="checkbox"
-                checked={showGuestServiceKit}
+                checked={showKit.showGuestServiceKit}
                 onChange={() => {
-                  setShowGuestServiceKit(true);
-                  setShowCountertopKit(false);
-                  setShowHandheldKit(false);
-                  setShowCounterOnlyKit(false);
+                  setShowkit({
+                    ...showKit,
+                    showGuestServiceKit: true,
+                    showCountertopKit: false,
+                    showCounterCustomerKit: false,
+                    showCounterOnlyKit: false,
+                    showTableKit: false,
+                  });
                 }}
               />
             </div>
@@ -311,13 +345,16 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
                 id="product-status-active"
                 className="form-check-input"
                 type="checkbox"
-                checked={showGuestServiceKit}
+                checked={showKit.showCounterOnlyKit}
                 onChange={() => {
-                  setShowCounterOnlyKit(true);
-                  setShowGuestServiceKit(false);
-                  setShowCountertopKit(false);
-                  setShowHandheldKit(false);
-                  setShowTableKit(false);
+                  setShowkit({
+                    ...showKit,
+                    showCounterOnlyKit: true,
+                    showCountertopKit: false,
+                    showCounterCustomerKit: false,
+                    showGuestServiceKit: false,
+                    showTableKit: false,
+                  });
                 }}
               />
             </div>
@@ -330,19 +367,23 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
                 id="product-status-active"
                 className="form-check-input"
                 type="checkbox"
-                checked={showGuestServiceKit}
+                checked={showKit.showTableKit}
                 onChange={() => {
-                  setShowTableKit(true);
-                  setShowGuestServiceKit(false);
-                  setShowCountertopKit(false);
-                  setShowHandheldKit(false);
+                  setShowkit({
+                    ...showKit,
+                    showTableKit: true,
+                    showCountertopKit: false,
+                    showCounterCustomerKit: false,
+                    showGuestServiceKit: false,
+                    showCounterOnlyKit: false,
+                  });
                 }}
               />
             </div>
           </div>
         </div>
       </div>
-      <div className=" flex justify-end mx-8 lg:-mt-32">
+      <div className=" flex justify-end mx-8">
         <button className="btn btn-primary shadow-md  text-sm">
           Add to Cart
         </button>

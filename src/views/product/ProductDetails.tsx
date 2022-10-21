@@ -49,7 +49,7 @@ const ProductDetails = () => {
             $100 + $50 <span className="text-sm">/mon</span>{" "}
           </h4>
           <div className="mt-4">
-            <div className="flex gap-8 mb-4 items-center bg-gray-300 w-40 rounded-md">
+            {/* <div className="flex gap-8 mb-4 items-center bg-gray-300 w-40 rounded-md">
               <button
                 className=" tracking-widest bg-white py-2 px-4 rounded-md rounded-r-none"
                 onClick={() => setQuantity(quantity - 1)}
@@ -63,7 +63,7 @@ const ProductDetails = () => {
               >
                 <PlusIcon className="w-6 h-6" />
               </button>
-            </div>
+            </div> */}
             <button
               className="btn btn-primary tracking-widest mt-4 w-44"
               onClick={() => navigateTo("/cart")}
