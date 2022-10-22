@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  OnsiteSupportModal,
   ProductList,
   StarterKit,
   StarterKitDescription,
@@ -27,11 +28,7 @@ import {
 const HomePage = () => {
   const navigateTo = useNavigate();
   const dispatch = useAppDispatch();
-  // const [showCountertopKit, setShowCountertopKit] = useState(true);
-  // const [showHandheldKit, setShowHandheldKit] = useState(false);
-  // const [showGuestServiceKit, setShowGuestServiceKit] = useState(false);
-  // const [showCounterOnlyKit, setShowCounterOnlyKit] = useState(false);
-  // const [showTableKit, setShowTableKit] = useState(false);
+  const [showOnsiteSupportModal, setShowOnsiteSupportModal] = useState(false);
 
   const [showKit, setShowkit] = useState({
     showCountertopKit: true,
@@ -57,7 +54,19 @@ const HomePage = () => {
         {/* Begin: All Starters  */}
         <div className="p-8 grid md:grid-cols-3 gap-4">
           {/* Begin: Basic Starter  */}
-          <div className="bg-white rounded-md px-8 py-4">
+          <div
+            className={`${
+              isActivated.basic ? "bg-primary" : "bg-white"
+            }  rounded-md px-8 py-4 cursor-pointer`}
+            onClick={() =>
+              setIsActivated({
+                ...isActivated,
+                basic: !isActivated.basic,
+                pro: false,
+                ultimate: false,
+              })
+            }
+          >
             <div className="flex">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <TrophyIcon className="h-14 w-14" />
@@ -67,37 +76,43 @@ const HomePage = () => {
                 <CheckBadgeIcon className="h-6 w-6   text-warning ml-auto" />
               )}
             </div>
-            <h2 className="text-xl text-black my-3">Basic Starter</h2>
-            <h2 className="text-3xl text-primary my-3">
+            <h2
+              className={`${
+                isActivated.basic ? "text-white" : "text-black"
+              } text-xl  my-3`}
+            >
+              Basic Starter
+            </h2>
+            <h2
+              className={`${
+                isActivated.basic ? "text-white" : "text-primary"
+              } text-3xl  my-3`}
+            >
               $50<span className="text-sm">/ month</span>
             </h2>
-            <div className="flex justify-between">
-              <button
-                className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
-                onClick={() => dispatch(openBasicPricingModal())}
-              >
-                Details
-              </button>
-
-              <button
-                className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
-                onClick={() =>
-                  setIsActivated({
-                    ...isActivated,
-                    basic: !isActivated.basic,
-                    pro: false,
-                    ultimate: false,
-                  })
-                }
-              >
-                {isActivated.basic ? "Activated" : "Activate"}
-              </button>
-            </div>
+            <button
+              className="btn bg-white btn-outline shadow-md mt-5 text-sm tracking-widest"
+              onClick={() => dispatch(openBasicPricingModal())}
+            >
+              Details
+            </button>
           </div>
           {/* End: Basic Starter  */}
 
           {/* Begin: Ultimate Starter  */}
-          <div className="bg-white rounded-md px-8 py-4">
+          <div
+            className={`${
+              isActivated.ultimate ? "bg-primary" : "bg-white"
+            } cursor-pointer rounded-md px-8 py-4`}
+            onClick={() =>
+              setIsActivated({
+                ...isActivated,
+                ultimate: !isActivated.ultimate,
+                basic: false,
+                pro: false,
+              })
+            }
+          >
             <div className="flex">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <GiftIcon className="h-14 w-14" />
@@ -106,36 +121,43 @@ const HomePage = () => {
                 <CheckBadgeIcon className="h-6 w-6  text-warning ml-auto" />
               )}
             </div>
-            <h2 className="text-xl text-black my-3">Ultimate</h2>
-            <h2 className="text-3xl text-primary my-3">
+            <h2
+              className={`${
+                isActivated.ultimate ? "text-white" : "text-black"
+              } text-xl  my-3`}
+            >
+              Ultimate
+            </h2>
+            <h2
+              className={`${
+                isActivated.ultimate ? "text-white" : "text-primary"
+              } text-3xl  my-3`}
+            >
               $139<span className="text-sm">/ month</span>
             </h2>
-            <div className="flex justify-between">
-              <button
-                className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
-                onClick={() => dispatch(openUltimatePricingModal())}
-              >
-                Details
-              </button>
-              <button
-                className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
-                onClick={() =>
-                  setIsActivated({
-                    ...isActivated,
-                    ultimate: !isActivated.ultimate,
-                    basic: false,
-                    pro: false,
-                  })
-                }
-              >
-                {isActivated.ultimate ? "Activated" : "Activate"}
-              </button>
-            </div>
+            <button
+              className="btn btn-outline shadow-md mt-5 text-sm tracking-widest bg-white"
+              onClick={() => dispatch(openUltimatePricingModal())}
+            >
+              Details
+            </button>
           </div>
           {/* END: Ultimate Starter  */}
 
           {/* Begin: Professional Starter  */}
-          <div className="bg-white rounded-md px-8 py-4">
+          <div
+            className={`${
+              isActivated.pro ? "bg-primary" : "bg-white"
+            } cursor-pointer rounded-md px-8 py-4`}
+            onClick={() =>
+              setIsActivated({
+                ...isActivated,
+                pro: !isActivated.pro,
+                ultimate: false,
+                basic: false,
+              })
+            }
+          >
             <div className="flex">
               <div className="rounded-full bg-[#edf6ff] h-24 w-24 flex items-center justify-center">
                 <RocketLaunchIcon className="h-14 w-14" />
@@ -144,32 +166,27 @@ const HomePage = () => {
                 <CheckBadgeIcon className="h-6 w-6 ml-auto text-warning" />
               )}
             </div>
-            <h2 className="text-xl text-black my-3">Professional</h2>
-            <h2 className="text-3xl text-primary my-3">
+            <h2
+              className={`${
+                isActivated.pro ? "text-white" : "text-black"
+              } text-xl  my-3`}
+            >
+              Professional
+            </h2>
+            <h2
+              className={`${
+                isActivated.pro ? "text-white" : "text-primary"
+              } text-3xl  my-3`}
+            >
               $199<span className="text-sm">/ month</span>
             </h2>
 
-            <div className="flex justify-between">
-              <button
-                className="btn btn-outline shadow-md mt-5 text-sm tracking-widest"
-                onClick={() => dispatch(openProPricingModal())}
-              >
-                Details
-              </button>
-              <button
-                className="btn btn-primary shadow-md mt-5 text-sm tracking-widest "
-                onClick={() =>
-                  setIsActivated({
-                    ...isActivated,
-                    pro: !isActivated.pro,
-                    ultimate: false,
-                    basic: false,
-                  })
-                }
-              >
-                {isActivated.pro ? "Activated" : "Activate"}
-              </button>
-            </div>
+            <button
+              className="btn btn-outline shadow-md mt-5 text-sm tracking-widest bg-white"
+              onClick={() => dispatch(openProPricingModal())}
+            >
+              Details
+            </button>
           </div>
           {/* END: Professional Starter  */}
         </div>
@@ -266,12 +283,12 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           {/* END: Guest service kit Description */}
         </div>
 
-        <div className="text-2xl mt-8 md:mt-0">
+        <div className="text-2xl mt-4 md:-mt-2">
           <h2 className="text-center">Stove Starter Kits </h2>
 
-          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
-            <ComputerDesktopIcon className="h-12 w-12" />
-            <div>CounterTopKit</div>
+          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+            <ComputerDesktopIcon className="h-8 w-8" />
+            <div className="text-base">CounterTopKit</div>
 
             <div className=" form-check form-switch">
               <input
@@ -292,9 +309,9 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
               />
             </div>
           </div>
-          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
-            <DevicePhoneMobileIcon className="w-12 h-12" />
-            <div>Counter + Customer Kit</div>
+          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+            <DevicePhoneMobileIcon className="w-8 h-8" />
+            <div className="text-base">Counter + Customer Kit</div>
 
             <div className=" form-check form-switch">
               <input
@@ -315,9 +332,9 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
               />
             </div>
           </div>
-          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
-            <UserGroupIcon className="h-12 w-12" />
-            <div>Guest Self-Service Kit</div>
+          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+            <UserGroupIcon className="h-8 w-8" />
+            <div className="text-base">Guest Self-Service Kit</div>
             <div className=" form-check form-switch">
               <input
                 id="product-status-active"
@@ -337,9 +354,9 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
               />
             </div>
           </div>
-          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
-            <UserGroupIcon className="h-12 w-12" />
-            <div>Counter Only Kit</div>
+          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+            <UserGroupIcon className="h-8 w-8" />
+            <div className="text-base">Counter Only Kit</div>
             <div className=" form-check form-switch">
               <input
                 id="product-status-active"
@@ -359,9 +376,9 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
               />
             </div>
           </div>
-          <div className="bg-white rounded-md flex p-4 mt-6 justify-between items-center">
-            <UserGroupIcon className="h-12 w-12" />
-            <div>Table Kit</div>
+          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+            <UserGroupIcon className="h-8 w-8" />
+            <div className="text-base">Table Kit</div>
             <div className=" form-check form-switch">
               <input
                 id="product-status-active"
@@ -383,19 +400,29 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           </div>
         </div>
       </div>
-      <div className=" flex justify-end mx-8">
-        <button className="btn btn-primary shadow-md  text-sm">
+      <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
+        <button className="btn btn-warning shadow-md  text-sm">
           Add to Cart
         </button>
         <a href="#product">
-          <button className="btn btn-primary shadow-md  text-sm ml-10">
+          <button className="btn btn-primary shadow-md  text-sm ">
             Build Your Kit
           </button>
         </a>
+        <button
+          className="btn btn-outling shadow-md bg-white  text-sm"
+          onClick={() => setShowOnsiteSupportModal(true)}
+        >
+          Add Onsite Support
+        </button>
       </div>
-      <div className="mt-32">
+      <div className="mt-14">
         <ProductList />
       </div>
+      <OnsiteSupportModal
+        showOnsiteSupportModal={showOnsiteSupportModal}
+        setShowOnsiteSupportModal={setShowOnsiteSupportModal}
+      />
     </>
   );
 };

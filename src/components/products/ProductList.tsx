@@ -7,7 +7,7 @@ import {
   ChevronDoubleRightIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
-
+import imgaeHolder from "../../assets/images/200x200.jpg";
 const ProductList = () => {
   const navigateTo = useNavigate();
   const [params, setParams] = useSearchParams();
@@ -25,6 +25,7 @@ const ProductList = () => {
           <table className=" table table-report -mt-2">
             <thead>
               <tr>
+                <th className=" whitespace-nowrap">Product Image</th>
                 <th className=" whitespace-nowrap">Product NAME</th>
                 <th className="text-center whitespace-nowrap">Product ID</th>
                 <th className="text-center whitespace-nowrap">Part Number</th>
@@ -39,6 +40,18 @@ const ProductList = () => {
             <tbody>
               {ProductData.map((product, index) => (
                 <tr key={product.PartNumber + index} className="intro-x">
+                  <td className="text-center">
+                    <div className="flex">
+                      <div className="w-10 h-10 image-fit zoom-in">
+                        <img
+                          alt=""
+                          className="rounded-full"
+                          src={imgaeHolder}
+                        />
+                      </div>
+                    </div>
+                  </td>
+
                   <td className="">
                     <button
                       className="font-medium whitespace-nowrap"
@@ -65,6 +78,7 @@ const ProductList = () => {
                       type="number"
                       step={1}
                       min={1}
+                      defaultValue={1}
                       onChange={(e: any) => {
                         // console.log(e.target.checked);
                       }}
@@ -91,7 +105,7 @@ const ProductList = () => {
       </div>
 
       {/* BEGIN: Pagination -*/}
-      <div className="flex flex-wrap items-center col-span-12 intro-y sm:flex-row sm:flex-nowrap px-8">
+      <div className="flex flex-wrap items-center col-span-12 intro-y sm:flex-row sm:flex-nowrap px-2 md:px-8">
         <nav className="w-full sm:w-auto sm:mr-auto">
           <ul className="pagination">
             <li className="page-item">
