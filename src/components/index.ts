@@ -5,3 +5,5 @@ export { default as StarterKitDescription } from "./starterKit/StarterKitDescrip
 export { default as ProductList } from "./products/ProductList";
 export { default as OnsiteSupportList } from "./onsiteSupport/OnsiteSupportList";
 export { default as OnsiteSupportModal } from "./onsiteSupport/OnsiteSupportModal";
+export { default as SoftwareAddOnList } from "./softwareAddOns/SoftwareAddOnList";
+export { default as SoftwareAddOnModal } from "./softwareAddOns/SoftwareAddOnModal";

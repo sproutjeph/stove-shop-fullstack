@@ -4,6 +4,8 @@ import {
   OnsiteSupportList,
   OnsiteSupportModal,
   ProductList,
+  SoftwareAddOnList,
+  SoftwareAddOnModal,
   StarterKit,
   StarterKitDescription,
 } from "../../components";
@@ -44,6 +46,7 @@ const HomePage = () => {
     pro: false,
   });
   const [showOnsiteSupportModal, setShowOnsiteSupportModal] = useState(false);
+  const [showSoftwareAddOnModal, setShowSoftwareAddOnModal] = useState(false);
 
   return (
     <>
@@ -89,7 +92,7 @@ const HomePage = () => {
                 isActivated.basic ? "text-white" : "text-primary"
               } text-3xl  my-3`}
             >
-              $50<span className="text-sm">/ month</span>
+              $59<span className="text-sm">/ month</span>
             </h2>
             <button
               className="btn bg-white btn-outline shadow-md mt-5 text-sm tracking-widest"
@@ -412,6 +415,23 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
         <ProductList />
       </div>
       <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
+        <a href="#software">
+          <button className="btn btn-primary shadow-md  text-sm ">
+            Add Software
+          </button>
+        </a>
+      </div>
+
+      <div className="mt-14 ">
+        <SoftwareAddOnList
+          setShowSoftwareAddOnModal={setShowSoftwareAddOnModal}
+        />
+        <SoftwareAddOnModal
+          setShowSoftwareAddOnModal={setShowSoftwareAddOnModal}
+          showSoftwareAddOnModal={showSoftwareAddOnModal}
+        />
+      </div>
+      <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
         <a href="#support">
           <button className="btn btn-primary shadow-md  text-sm ">
             Add Support
@@ -422,12 +442,12 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
         <OnsiteSupportList
           setShowOnsiteSupportModal={setShowOnsiteSupportModal}
         />
-      </div>
 
-      <OnsiteSupportModal
-        showOnsiteSupportModal={showOnsiteSupportModal}
-        setShowOnsiteSupportModal={setShowOnsiteSupportModal}
-      />
+        <OnsiteSupportModal
+          showOnsiteSupportModal={showOnsiteSupportModal}
+          setShowOnsiteSupportModal={setShowOnsiteSupportModal}
+        />
+      </div>
     </>
   );
 };
