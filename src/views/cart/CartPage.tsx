@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import itemImg1 from "@/assets/images/counter-top-kit.jpg";
+import itemImg2 from "@/assets/images/guest-service-kit.jpg";
 import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const CartPage = () => {
@@ -22,6 +23,47 @@ const CartPage = () => {
         <div className=" mt-4 md:flex gap-8 justify-center border-b-[1px]  border-slate-500 pb-6 md:pb-12">
           <div className="max-w-lg mb-2 mx-auto md:mx-0 md:w-72 h-56">
             <img src={itemImg1} alt="" className="rounded-md h-full w-full " />
+          </div>
+          <div className="text-center ">
+            <h2 className="text-primary tracking-wider text-lg md:text-xl">
+              Stove CounterTop 2 $409+ $50 <span className="text-sm">/mo</span>
+            </h2>
+            <p className="text-xs max-w-[22rem]  mt-2 md:text-sm ">
+              Inside, outside, drive-through, curbside - Toast Go® 2 mobile
+              handhelds are fast, safe, flexible and ready to help your business
+              adapt.
+            </p>
+
+            <div className="flex gap-8 mb-4 items-center bg-gray-300 w-full rounded-md mt-6">
+              <button
+                className=" tracking-widest bg-white py-2 px-10 rounded-md rounded-r-none"
+                onClick={() => setQuantity(quantity - 1)}
+              >
+                <MinusIcon className="w-6 h-6" />
+              </button>
+              <span className="text-base py-2 px-[21px] w-[25px] text-green-700">
+                {quantity}
+              </span>
+              <button
+                className="py-2 px-10 tracking-widest bg-green-500 text-white"
+                onClick={() => setQuantity(quantity + 1)}
+              >
+                <PlusIcon className="w-6 h-6" />
+              </button>
+              <button
+                className="py-2 px-10 tracking-widest bg-warning text-white rounded-md rounded-l-none -ml-8"
+                // onClick={() => setQuantity(quantity + 1)}
+              >
+                <TrashIcon className="w-6 h-6" />
+              </button>
+            </div>
+
+            <h2 className="text-2xl tracking-widest">Amount : $250</h2>
+          </div>
+        </div>
+        <div className=" mt-4 md:flex gap-8 justify-center border-b-[1px]  border-slate-500 pb-6 md:pb-12">
+          <div className="max-w-lg mb-2 mx-auto md:mx-0 md:w-72 h-56">
+            <img src={itemImg2} alt="" className="rounded-md h-full w-full " />
           </div>
           <div className="text-center ">
             <h2 className="text-primary tracking-wider text-lg md:text-xl">
