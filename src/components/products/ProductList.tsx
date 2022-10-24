@@ -8,7 +8,7 @@ import {
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 import imgaeHolder from "../../assets/images/200x200.jpg";
-const ProductList = () => {
+const ProductList = ({ setShowProductDetailsModal }: any) => {
   const navigateTo = useNavigate();
   const [params, setParams] = useSearchParams();
   // console.log(params.get("productId"));
@@ -56,11 +56,12 @@ const ProductList = () => {
                     <button
                       className="font-medium whitespace-nowrap"
                       onClick={() => {
-                        setParams({
-                          ...params,
-                          productId: `${product.productId}`,
-                        });
-                        navigateTo("/product-details");
+                        // setParams({
+                        //   ...params,
+                        //   productId: `${product.productId}`,
+                        // });
+                        // navigateTo("/product-details");
+                        setShowProductDetailsModal(true);
                       }}
                     >
                       {product.productName}

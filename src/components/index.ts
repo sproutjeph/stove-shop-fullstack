@@ -7,3 +7,4 @@ export { default as OnsiteSupportList } from "./onsiteSupport/OnsiteSupportList"
 export { default as OnsiteSupportModal } from "./onsiteSupport/OnsiteSupportModal";
 export { default as SoftwareAddOnList } from "./softwareAddOns/SoftwareAddOnList";
 export { default as SoftwareAddOnModal } from "./softwareAddOns/SoftwareAddOnModal";
+export { default as ProductDetailsModal } from "./products/ProductDetailsModal";

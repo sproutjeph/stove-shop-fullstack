@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   OnsiteSupportList,
   OnsiteSupportModal,
+  ProductDetailsModal,
   ProductList,
   SoftwareAddOnList,
   SoftwareAddOnModal,
@@ -47,6 +48,7 @@ const HomePage = () => {
   });
   const [showOnsiteSupportModal, setShowOnsiteSupportModal] = useState(false);
   const [showSoftwareAddOnModal, setShowSoftwareAddOnModal] = useState(false);
+  const [showProductDetailsModal, setShowProductDetailsModal] = useState(false);
 
   return (
     <>
@@ -412,7 +414,11 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
         </a>
       </div>
       <div className="mt-14 mb-8">
-        <ProductList />
+        <ProductList setShowProductDetailsModal={setShowProductDetailsModal} />
+        <ProductDetailsModal
+          setShowProductDetailsModal={setShowProductDetailsModal}
+          showProductDetailsModal={showProductDetailsModal}
+        />
       </div>
       <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
         <a href="#software">
