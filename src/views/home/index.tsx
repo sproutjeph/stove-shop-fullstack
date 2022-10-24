@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  OnsiteSupportList,
   OnsiteSupportModal,
   ProductList,
   StarterKit,
@@ -28,7 +29,6 @@ import {
 const HomePage = () => {
   const navigateTo = useNavigate();
   const dispatch = useAppDispatch();
-  const [showOnsiteSupportModal, setShowOnsiteSupportModal] = useState(false);
 
   const [showKit, setShowkit] = useState({
     showCountertopKit: true,
@@ -43,6 +43,7 @@ const HomePage = () => {
     ultimate: false,
     pro: false,
   });
+  const [showOnsiteSupportModal, setShowOnsiteSupportModal] = useState(false);
 
   return (
     <>
@@ -401,24 +402,28 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
         </div>
       </div>
       <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
-        <button className="btn btn-warning shadow-md  text-sm">
-          Add to Cart
-        </button>
         <a href="#product">
           <button className="btn btn-primary shadow-md  text-sm ">
             Build Your Kit
           </button>
         </a>
-        <button
-          className="btn btn-outling shadow-md bg-white  text-sm"
-          onClick={() => setShowOnsiteSupportModal(true)}
-        >
-          Add Onsite Support
-        </button>
       </div>
-      <div className="mt-14">
+      <div className="mt-14 mb-8">
         <ProductList />
       </div>
+      <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
+        <a href="#support">
+          <button className="btn btn-primary shadow-md  text-sm ">
+            Add Support
+          </button>
+        </a>
+      </div>
+      <div className="mt-14 mb-8">
+        <OnsiteSupportList
+          setShowOnsiteSupportModal={setShowOnsiteSupportModal}
+        />
+      </div>
+
       <OnsiteSupportModal
         showOnsiteSupportModal={showOnsiteSupportModal}
         setShowOnsiteSupportModal={setShowOnsiteSupportModal}
