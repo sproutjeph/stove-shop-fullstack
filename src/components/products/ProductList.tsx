@@ -34,7 +34,7 @@ const ProductList = ({ setShowProductDetailsModal }: any) => {
                   Default Currency
                 </th>
                 <th className="text-center whitespace-nowrap">QTY</th>
-                <th className="text-center whitespace-nowrap">Add Product</th>
+                <th className="text-center whitespace-nowrap">Active</th>
               </tr>
             </thead>
             <tbody>
@@ -73,28 +73,22 @@ const ProductList = ({ setShowProductDetailsModal }: any) => {
                   <td className="text-center ">USD</td>
 
                   <td className="text-center">
-                    <input
-                      id=""
-                      className="form-control outline-none w-20"
-                      type="number"
-                      step={1}
-                      min={1}
-                      defaultValue={1}
-                      onChange={(e: any) => {
-                        // console.log(e.target.checked);
-                      }}
-                    />
+                    <select name="" id="" className="form-control">
+                      <option value="">1</option>
+                      <option value="">2</option>
+                      <option value="">3</option>
+                      <option value="">4</option>
+                      <option value="">5</option>
+                    </select>
                   </td>
                   <td className="">
                     <div className="justify-center form-check form-switch">
                       <input
-                        id="product-status-active"
-                        className="form-check-input"
+                        id=""
+                        className="check-box"
                         type="checkbox"
-                        checked={false}
-                        onChange={(e: any) => {
-                          // console.log(e.target.checked);
-                        }}
+                        checked={true}
+                        onChange={() => {}}
                       />
                     </div>
                   </td>

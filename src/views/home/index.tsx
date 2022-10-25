@@ -413,7 +413,7 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           </button>
         </a>
       </div>
-      <div className="mt-14 mb-8">
+      <div className="mt-14">
         <ProductList setShowProductDetailsModal={setShowProductDetailsModal} />
         <ProductDetailsModal
           setShowProductDetailsModal={setShowProductDetailsModal}
@@ -453,6 +453,31 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           showOnsiteSupportModal={showOnsiteSupportModal}
           setShowOnsiteSupportModal={setShowOnsiteSupportModal}
         />
+      </div>
+      <div className="md:text-lg text-base capitalize  text-white bg-primary  items-center mb-8 p-4 grid grid-cols-2 gap-4 md:flex md:gap-10 md:px-20">
+        <div className="flex flex-col items-center">
+          <h2>one time fee </h2>
+          <span>$0.0</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <h2> monthly fee </h2>
+          <span>$0.0</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <h2>deposit fee </h2>
+          <span>$0.0</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <h2>amount due today </h2>
+          <span>$0.0</span>
+        </div>
+
+        <button
+          className="btn btn-warning shadow-md col-span-2 text-sm md:ml-auto "
+          onClick={() => navigateTo("/cart")}
+        >
+          Cart Review / Checkout
+        </button>
       </div>
     </>
   );

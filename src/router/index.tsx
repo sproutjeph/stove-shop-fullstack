@@ -1,5 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { ErrorPage, HomePage, AuthPage, PricingPage, CartPage } from "../views";
+import {
+  ErrorPage,
+  HomePage,
+  AuthPage,
+  PricingPage,
+  CartPage,
+  CheckOut,
+} from "../views";
 
 function Router() {
   return (
@@ -14,6 +21,7 @@ function Router() {
 
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckOut />} />
 
         <Route path="/error-page" element={<ErrorPage />} />
         <Route path="/*" element={<ErrorPage />} />

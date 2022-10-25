@@ -13,6 +13,8 @@ const supportData = [
   { id: "3", support: "sopport-3", info: "info", text: "text" },
   { id: "4", support: "sopport-4", info: "info", text: "text" },
   { id: "5", support: "sopport-5", info: "info", text: "text" },
+  { id: "6", support: "sopport-6", info: "info", text: "text" },
+  { id: "7", support: "sopport-7", info: "info", text: "text" },
 ];
 
 const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
@@ -30,11 +32,11 @@ const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
               <thead>
                 <tr>
                   <th className=" whitespace-nowrap">Supports</th>
-                  <th className="text-center whitespace-nowrap">Add Info</th>
-                  <th className="text-center whitespace-nowrap">Info</th>
-                  <th className="text-center whitespace-nowrap">Test</th>
+                  {/* <th className="text-center whitespace-nowrap">Add Info</th> */}
+                  {/* <th className="text-center whitespace-nowrap">Info</th> */}
+                  {/* <th className="text-center whitespace-nowrap">Test</th> */}
 
-                  <th className="text-center whitespace-nowrap">Add Support</th>
+                  <th className="text-center whitespace-nowrap">Active</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,26 +47,26 @@ const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
                         {support.support}
                       </button>
                     </td>
-                    <td className="text-center">
+                    {/* <td className="text-center">
                       <button
                         className="btn btn-outline border-2 border-dashed "
                         onClick={() => setShowOnsiteSupportModal(true)}
                       >
                         <PlusIcon className="h-6 w-6" />
                       </button>
-                    </td>
-                    <td className="text-center ">{support.info}</td>
-                    <td className="text-center ">{support.text}</td>
+                    </td> */}
+                    {/* <td className="text-center ">{support.info}</td> */}
+                    {/* <td className="text-center ">{support.text}</td> */}
 
                     <td className="">
                       <div className="justify-center form-check form-switch">
                         <input
                           id="product-status-active"
-                          className="form-check-input"
+                          className="check-box"
                           type="checkbox"
-                          checked={false}
+                          checked={true}
                           onChange={(e: any) => {
-                            // console.log(e.target.checked);
+                            console.log(e.target.checked);
                           }}
                         />
                       </div>

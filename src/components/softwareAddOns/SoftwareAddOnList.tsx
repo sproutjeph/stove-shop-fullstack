@@ -13,6 +13,9 @@ const supportData = [
   { id: "3", software: "software-3", info: "info", text: "text" },
   { id: "4", software: "software-4", info: "info", text: "text" },
   { id: "5", software: "software-5", info: "info", text: "text" },
+  { id: "6", software: "software-6", info: "info", text: "text" },
+  { id: "7", software: "software-7", info: "info", text: "text" },
+  { id: "8", software: "software-8", info: "info", text: "text" },
 ];
 
 const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
@@ -30,13 +33,11 @@ const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
               <thead>
                 <tr>
                   <th className=" whitespace-nowrap">Softwares</th>
-                  <th className="text-center whitespace-nowrap">Add Info</th>
-                  <th className="text-center whitespace-nowrap">Info</th>
-                  <th className="text-center whitespace-nowrap">Test</th>
+                  {/* <th className="text-center whitespace-nowrap">Add Info</th> */}
+                  {/* <th className="text-center whitespace-nowrap">Info</th> */}
+                  {/* <th className="text-center whitespace-nowrap">Test</th> */}
 
-                  <th className="text-center whitespace-nowrap">
-                    Add Software
-                  </th>
+                  <th className="text-center whitespace-nowrap">Active</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,24 +48,24 @@ const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
                         {software.software}
                       </button>
                     </td>
-                    <td className="text-center">
+                    {/* <td className="text-center">
                       <button
                         className="btn btn-outline border-2 border-dashed "
                         onClick={() => setShowSoftwareAddOnModal(true)}
                       >
                         <PlusIcon className="h-6 w-6" />
                       </button>
-                    </td>
-                    <td className="text-center ">{software.info}</td>
-                    <td className="text-center ">{software.text}</td>
+                    </td> */}
+                    {/* <td className="text-center ">{software.info}</td> */}
+                    {/* <td className="text-center ">{software.text}</td> */}
 
                     <td className="">
                       <div className="justify-center form-check form-switch">
                         <input
                           id="product-status-active"
-                          className="form-check-input"
+                          className="check-box"
                           type="checkbox"
-                          checked={false}
+                          checked={true}
                           onChange={(e: any) => {
                             // console.log(e.target.checked);
                           }}

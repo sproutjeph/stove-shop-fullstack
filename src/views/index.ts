@@ -7,3 +7,4 @@ export { default as CartModal } from "./cart/CartModal";
 export { default as BasicPricingModal } from "./pricing/modals/BasicPricingModal";
 export { default as UltimatePricingModal } from "./pricing/modals/UltimatePricingModal";
 export { default as ProfessionalPricingModal } from "./pricing/modals/ProfessionalPricingModal";
+export { default as CheckOut } from "./checkOut/CheckOut";

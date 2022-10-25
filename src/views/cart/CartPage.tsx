@@ -10,6 +10,24 @@ const CartPage = () => {
 
   return (
     <>
+      <div className="mt-2 justify-center capitalize   bg-white  items-center  p-4 grid grid-cols-2 gap-4 md:flex md:gap-10">
+        <div className="flex flex-col items-center">
+          <h2>one time fee </h2>
+          <span>$0.0</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <h2> monthly fee </h2>
+          <span>$0.0</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <h2>deposit fee </h2>
+          <span>$0.0</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <h2>amount due today </h2>
+          <span>$0.0</span>
+        </div>
+      </div>
       <div className="p-8 ">
         <div className=" max-w-xl md:max-w-2xl p-4 text-center mx-auto">
           <h2 className="text-4xl font-thin tracking-wide">
@@ -131,7 +149,10 @@ const CartPage = () => {
         </div>
         <div className="flex">
           <div />
-          <button className="bg-primary w-full btn text-white text-lg tracking-widest max-w-md ml-auto ">
+          <button
+            className="bg-primary w-full btn text-white text-lg tracking-widest max-w-md ml-auto "
+            onClick={() => navigateTo("/checkout")}
+          >
             Check Out
           </button>
         </div>

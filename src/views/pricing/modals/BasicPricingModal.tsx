@@ -28,7 +28,7 @@ const BasicPricingModal = () => {
               </div>
               <h2 className="text-xl text-black my-3">Basic Starter</h2>
               <h2 className="text-3xl text-primary my-3">
-                $50<span className="text-sm">/ month</span>
+                $59<span className="text-sm">/ month</span>
               </h2>
               <hr />
               <ul className="mt-6 grid grid-cols-2 gap-4 text-black">
