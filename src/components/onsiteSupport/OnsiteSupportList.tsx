@@ -15,19 +15,20 @@ const supportData = [
   { id: "5", support: "sopport-5", info: "info", text: "text" },
   { id: "6", support: "sopport-6", info: "info", text: "text" },
   { id: "7", support: "sopport-7", info: "info", text: "text" },
+  { id: "8", support: "sopport-8", info: "info", text: "text" },
 ];
 
 const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
   return (
     <>
-      <section className="h-screen" id="support">
+      <section className="" id="support">
         <div className="">
-          <h2 className="text-4xl text-center text-primary tracking-wider">
+          <h2 className="text-4xl text-center text-primary tracking-wide">
             Onsite Support
           </h2>
         </div>
-        <div className="px-4 md:px-8 grid grid-cols-12 gap-6 mt-5 ">
-          <div className="intro-y col-span-12 overflow-auto lg:overflow-visible mb-8">
+        <div className="px-4 md:px-8 grid grid-cols-12 gap-6 mt-2 md:mt-0 ">
+          <div className="intro-y col-span-12 overflow-auto lg:overflow-visible">
             <table className=" table table-report -mt-2">
               <thead>
                 <tr>

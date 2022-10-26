@@ -34,7 +34,6 @@ const ProductList = ({ setShowProductDetailsModal }: any) => {
                   Default Currency
                 </th>
                 <th className="text-center whitespace-nowrap">QTY</th>
-                <th className="text-center whitespace-nowrap">Active</th>
               </tr>
             </thead>
             <tbody>
@@ -80,17 +79,6 @@ const ProductList = ({ setShowProductDetailsModal }: any) => {
                       <option value="">4</option>
                       <option value="">5</option>
                     </select>
-                  </td>
-                  <td className="">
-                    <div className="justify-center form-check form-switch">
-                      <input
-                        id=""
-                        className="check-box"
-                        type="checkbox"
-                        checked={true}
-                        onChange={() => {}}
-                      />
-                    </div>
                   </td>
                 </tr>
               ))}

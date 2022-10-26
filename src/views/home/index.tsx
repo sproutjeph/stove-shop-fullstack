@@ -237,7 +237,7 @@ const HomePage = () => {
 
           {/* Begin: CounterTopKit Description */}
           <div className="">
-            {showKit.showCounterOnlyKit && (
+            {/* {showKit.showCounterOnlyKit && (
               <StarterKitDescription
                 descriptionHeader="Point of Sale that is more than just a POS. Join the revolution and
           experience STOVE’s all in one platform that can streamline your
@@ -250,12 +250,12 @@ const HomePage = () => {
                   "Station, Handheld, Kiosks available",
                 ]}
               />
-            )}
+            )} */}
 
             {/* END: CounterTopKit Description */}
 
             {/* Begin: handheldKit Description */}
-            {showKit.showTableKit && (
+            {/* {showKit.showTableKit && (
               <StarterKitDescription
                 descriptionHeader="Whether you're fulfilling orders in the dining room, opening your patio, or hitting the road, the next generation of Stove handheld POS is ready."
                 descriptionItems={[
@@ -266,12 +266,12 @@ const HomePage = () => {
                   "Station, Handheld, Kiosks available",
                 ]}
               />
-            )}
+            )} */}
 
             {/* END: handheldKit Description */}
 
             {/* Begin: Guest service kit Description */}
-            {showKit.showCountertopKit && (
+            {/* {showKit.showCountertopKit && (
               <StarterKitDescription
                 descriptionHeader="Enhance your guests experience as soon as they walk through the door. STOVE’s modern form
 of labor is here to stay, add self ordering kiosks to your quick service, fast casual, café or bakery, or any enterprise today!"
@@ -283,7 +283,7 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
                   "Station, Handheld, Kiosks available",
                 ]}
               />
-            )}
+            )} */}
           </div>
 
           {/* END: Guest service kit Description */}
@@ -292,117 +292,97 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
         <div className="text-2xl mt-4 md:-mt-2">
           <h2 className="text-center">Stove Starter Kits </h2>
 
-          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+          <div
+            className={`${
+              showKit.showCountertopKit ? "bg-primary text-white" : "bg-white "
+            }  rounded-md flex p-2 mt-6 justify-center px-10 md:px-32 items-center cursor-pointer`}
+            onClick={() =>
+              setShowkit({
+                ...showKit,
+                showCountertopKit: true,
+                showCounterCustomerKit: false,
+                showGuestServiceKit: false,
+                showCounterOnlyKit: false,
+                showTableKit: false,
+              })
+            }
+          >
             <ComputerDesktopIcon className="h-8 w-8" />
-            <div className="text-base">CounterTopKit</div>
-
-            <div className=" form-check form-switch">
-              <input
-                id="product-status-active"
-                className="form-check-input"
-                type="checkbox"
-                checked={showKit.showCountertopKit}
-                onChange={() =>
-                  setShowkit({
-                    ...showKit,
-                    showCountertopKit: true,
-                    showCounterCustomerKit: false,
-                    showGuestServiceKit: false,
-                    showCounterOnlyKit: false,
-                    showTableKit: false,
-                  })
-                }
-              />
-            </div>
+            <div className="text-base ml-auto">CounterTopKit</div>
           </div>
-          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+          <div
+            className={`${
+              showKit.showCounterCustomerKit
+                ? "bg-primary text-white"
+                : "bg-white"
+            }  rounded-md flex p-2 mt-6 justify-center px-10 md:px-32 items-center cursor-pointer`}
+            onClick={() =>
+              setShowkit({
+                ...showKit,
+                showCounterCustomerKit: true,
+                showCountertopKit: false,
+                showGuestServiceKit: false,
+                showCounterOnlyKit: false,
+                showTableKit: false,
+              })
+            }
+          >
             <DevicePhoneMobileIcon className="w-8 h-8" />
-            <div className="text-base">Counter + Customer Kit</div>
-
-            <div className=" form-check form-switch">
-              <input
-                id="product-status-active"
-                className="form-check-input"
-                type="checkbox"
-                checked={showKit.showCounterCustomerKit}
-                onChange={() => {
-                  setShowkit({
-                    ...showKit,
-                    showCounterCustomerKit: true,
-                    showCountertopKit: false,
-                    showGuestServiceKit: false,
-                    showCounterOnlyKit: false,
-                    showTableKit: false,
-                  });
-                }}
-              />
-            </div>
+            <div className="text-base ml-auto">Counter + Customer Kit</div>
           </div>
-          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+          <div
+            className={`${
+              showKit.showGuestServiceKit ? "bg-primary text-white" : "bg-white"
+            }  rounded-md flex p-2 mt-6 justify-center px-10 md:px-32 items-center cursor-pointer`}
+            onClick={() =>
+              setShowkit({
+                ...showKit,
+                showGuestServiceKit: true,
+                showCountertopKit: false,
+                showCounterCustomerKit: false,
+                showCounterOnlyKit: false,
+                showTableKit: false,
+              })
+            }
+          >
             <UserGroupIcon className="h-8 w-8" />
-            <div className="text-base">Guest Self-Service Kit</div>
-            <div className=" form-check form-switch">
-              <input
-                id="product-status-active"
-                className="form-check-input"
-                type="checkbox"
-                checked={showKit.showGuestServiceKit}
-                onChange={() => {
-                  setShowkit({
-                    ...showKit,
-                    showGuestServiceKit: true,
-                    showCountertopKit: false,
-                    showCounterCustomerKit: false,
-                    showCounterOnlyKit: false,
-                    showTableKit: false,
-                  });
-                }}
-              />
-            </div>
+            <div className="text-base ml-auto">Guest Self-Service Kit</div>
           </div>
-          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+          <div
+            className={`${
+              showKit.showCounterOnlyKit ? "bg-primary text-white" : "bg-white"
+            }  rounded-md flex p-2 mt-6 justify-center px-10 md:px-32 items-center cursor-pointer`}
+            onClick={() =>
+              setShowkit({
+                ...showKit,
+                showCounterOnlyKit: true,
+                showCountertopKit: false,
+                showCounterCustomerKit: false,
+                showGuestServiceKit: false,
+                showTableKit: false,
+              })
+            }
+          >
             <UserGroupIcon className="h-8 w-8" />
-            <div className="text-base">Counter Only Kit</div>
-            <div className=" form-check form-switch">
-              <input
-                id="product-status-active"
-                className="form-check-input"
-                type="checkbox"
-                checked={showKit.showCounterOnlyKit}
-                onChange={() => {
-                  setShowkit({
-                    ...showKit,
-                    showCounterOnlyKit: true,
-                    showCountertopKit: false,
-                    showCounterCustomerKit: false,
-                    showGuestServiceKit: false,
-                    showTableKit: false,
-                  });
-                }}
-              />
-            </div>
+            <div className="text-base ml-auto">Counter Only Kit</div>
           </div>
-          <div className="bg-white rounded-md flex p-2 mt-6 justify-between items-center">
+          <div
+            className={`${
+              showKit.showTableKit ? "bg-primary text-white" : "bg-white"
+            }  rounded-md flex p-2 mt-6 justify-center px-10 md:px-32 items-center cursor-pointer`}
+            onClick={() =>
+              setShowkit({
+                ...showKit,
+                showTableKit: true,
+                showCountertopKit: false,
+                showCounterCustomerKit: false,
+                showGuestServiceKit: false,
+                showCounterOnlyKit: false,
+              })
+            }
+          >
             <UserGroupIcon className="h-8 w-8" />
-            <div className="text-base">Table Kit</div>
-            <div className=" form-check form-switch">
-              <input
-                id="product-status-active"
-                className="form-check-input"
-                type="checkbox"
-                checked={showKit.showTableKit}
-                onChange={() => {
-                  setShowkit({
-                    ...showKit,
-                    showTableKit: true,
-                    showCountertopKit: false,
-                    showCounterCustomerKit: false,
-                    showGuestServiceKit: false,
-                    showCounterOnlyKit: false,
-                  });
-                }}
-              />
-            </div>
+            <div className="text-base ml-auto">Table Kit</div>
           </div>
         </div>
       </div>
@@ -413,14 +393,14 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           </button>
         </a>
       </div>
-      <div className="mt-14">
+      <div className="mt-6">
         <ProductList setShowProductDetailsModal={setShowProductDetailsModal} />
         <ProductDetailsModal
           setShowProductDetailsModal={setShowProductDetailsModal}
           showProductDetailsModal={showProductDetailsModal}
         />
       </div>
-      <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
+      <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4 mt-20 md:mt-0">
         <a href="#software">
           <button className="btn btn-primary shadow-md  text-sm ">
             Add Software
@@ -428,7 +408,7 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
         </a>
       </div>
 
-      <div className="mt-14 ">
+      <div className="mt-6 ">
         <SoftwareAddOnList
           setShowSoftwareAddOnModal={setShowSoftwareAddOnModal}
         />
@@ -437,14 +417,14 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           showSoftwareAddOnModal={showSoftwareAddOnModal}
         />
       </div>
-      <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4">
+      <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4 mt-10 md:mt-0">
         <a href="#support">
           <button className="btn btn-primary shadow-md  text-sm ">
             Add Support
           </button>
         </a>
       </div>
-      <div className="mt-14 mb-8">
+      <div className="mt-6">
         <OnsiteSupportList
           setShowOnsiteSupportModal={setShowOnsiteSupportModal}
         />
