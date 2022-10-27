@@ -65,7 +65,15 @@ const CheckOut = () => {
                 <Image />
               </div>
             </div>
-            <div className=" col-span-6 mt-7">
+            <div className=" col-span-full w-full">
+              <label htmlFor="update-profile-form-2" className="form-label">
+                Bank Check Image
+              </label>
+              <div className="w-full border">
+                <Image />
+              </div>
+            </div>
+            <div className=" col-span-12 mt-7 ">
               <button className="bg-primary py-2 rounded-md w-full text-white ">
                 Proceed
               </button>
