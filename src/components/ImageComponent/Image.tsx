@@ -3,12 +3,12 @@ import { ArrowUpTrayIcon, MinusIcon } from "@heroicons/react/24/outline";
 
 const Images = () => {
   const uploadInputRef = useRef<any>();
-  const [imageFiles, setImageFiles] = useState<any[]>([]);
+  const [imageFiles, setImageFiles] = useState<string[]>([]);
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
 
-    const filesArr: any[] = [];
+    const filesArr: string[] = [];
 
     if (files) {
       for (let i = 0; i < files?.length; i++) {

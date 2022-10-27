@@ -5,17 +5,17 @@ const CheckOut = () => {
   const navigateTo = useNavigate();
   return (
     <>
-      <div className="px-8 md:px-16  my-8  flex justify-between">
+      <div className="px-4 md:px-16  my-8  flex justify-between">
         <h2 className="text-4xl font-medium text-primary">Checkout</h2>
         <button className="btn btn-outline" onClick={() => navigateTo("/cart")}>
           Back to Cart
         </button>
       </div>
-      <div className="px-8 md:px-16">
+      <div className="px-4 md:px-16">
         <div className="grid md:grid-cols-2 gap-4">
-          <div className="bg-white rounded-md grid grid-cols-12 p-8 gap-4 w-full h-fit">
+          <div className="bg-white rounded-md grid grid-cols-12 p-5 gap-4 w-full h-fit">
             <div className="col-span-12">
-              <h2 className=" text-xl">
+              <h2 className="text:lg md:text-xl">
                 If you have hardware items in your order we will ship them to
                 this address.
               </h2>
