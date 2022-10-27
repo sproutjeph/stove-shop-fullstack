@@ -434,7 +434,7 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           setShowOnsiteSupportModal={setShowOnsiteSupportModal}
         />
       </div>
-      <div className="md:text-lg text-base capitalize  text-white bg-primary  items-center mb-8 p-4 grid grid-cols-2 gap-4 md:flex md:gap-10 md:px-20">
+      <div className="mt-2 md:text-lg text-base capitalize  text-white bg-primary  items-center mb-8 p-4 grid grid-cols-2 gap-4 md:flex md:gap-10 md:px-20">
         <div className="flex flex-col items-center">
           <h2>one time fee </h2>
           <span>$0.0</span>

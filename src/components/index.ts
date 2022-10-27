@@ -8,3 +8,4 @@ export { default as OnsiteSupportModal } from "./onsiteSupport/OnsiteSupportModa
 export { default as SoftwareAddOnList } from "./softwareAddOns/SoftwareAddOnList";
 export { default as SoftwareAddOnModal } from "./softwareAddOns/SoftwareAddOnModal";
 export { default as ProductDetailsModal } from "./products/ProductDetailsModal";
+export { default as Image } from "./ImageComponent/Image";

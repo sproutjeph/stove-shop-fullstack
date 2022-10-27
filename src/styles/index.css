@@ -1,5 +1,10 @@
 @import "./_tailwind.css";
 
+@import "@left4code/tw-starter/dist/css/mixins/_media.css";
+@import "@left4code/tw-starter/dist/css/_image-fit.css";
+@import "@left4code/tw-starter/dist/css/_pagination.css";
+@import "@left4code/tw-starter/dist/css/_file.css";
+
 @import "./_thirdParty.css";
 @import "./_global.css";
 @import "./_colors.css";
