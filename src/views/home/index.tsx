@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   OnsiteSupportList,
   OnsiteSupportModal,
-  PaymentList,
+  Payment,
   ProductDetailsModal,
   ProductList,
   SoftwareAddOnList,
@@ -401,9 +401,9 @@ of labor is here to stay, add self ordering kiosks to your quick service, fast c
           showProductDetailsModal={showProductDetailsModal}
         />
       </div>
-      {/* <div className="mt-6">
-        <PaymentList />
-      </div> */}
+      <div className="mt-6">
+        <Payment />
+      </div>
       <div className=" flex justify-center mx-8 border border-b-gray-300 pb-4 gap-4 mt-20 md:mt-0">
         <a href="#software">
           <button className="btn btn-primary shadow-md  text-sm ">

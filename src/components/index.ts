@@ -9,4 +9,4 @@ export { default as SoftwareAddOnList } from "./softwareAddOns/SoftwareAddOnList
 export { default as SoftwareAddOnModal } from "./softwareAddOns/SoftwareAddOnModal";
 export { default as ProductDetailsModal } from "./products/ProductDetailsModal";
 export { default as Image } from "./ImageComponent/Image";
-export { default as PaymentList } from "./payments/PaymentList";
+export { default as Payment } from "./payments/Payment";
