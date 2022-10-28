@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "../modal/Modal";
+import counterTopKit from "@/assets/images/counter-top-kit.jpg";
 
 const OnSiteSupportModal = ({
   showOnsiteSupportModal,
@@ -22,64 +23,33 @@ const OnSiteSupportModal = ({
 
           <Modal.Body>
             <>
-              <div className="grid grid-cols-12 gap-4 gap-y-5 mt-5 p-5">
-                <div className="intro-y col-span-12 md:col-span-6">
-                  <label
-                    htmlFor="input-wizard-1"
-                    className="form-label text-slate-700"
-                  >
-                    Company Name
-                  </label>
-                  <input className="form-control p-2 border outline-none" />
+              <div className="grid md:grid-cols-2 gap-8 md:gap-20">
+                <div className="">
+                  <img src={counterTopKit} alt="" className="rounded-md" />
                 </div>
-                <div className="intro-y col-span-12 md:col-span-6">
-                  <label
-                    htmlFor="input-wizard-1"
-                    className="form-label text-slate-700"
-                  >
-                    Contact Person
-                  </label>
-                  <input className="form-control p-2 border outline-none" />
+                <div className="">
+                  <h2 className="text-2xl text-primary">Support 1</h2>
+
+                  <p className="text-sm text-gray-500 mt-2 max-w-md">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Harum nisi aperiam possimus mollitia incidunt, excepturi
+                    dolor facilis reiciendis asperiores eos?
+                  </p>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Dimensions: 7.5" x 4" x .0.8 - 2"
+                  </p>
+                  <h4 className="text-warning text-lg mt-2">
+                    $100 + $50 <span className="text-sm">/mon</span>{" "}
+                  </h4>
                 </div>
-                <div className="intro-y col-span-12 md:col-span-6">
-                  <label
-                    htmlFor="input-wizard-1"
-                    className="form-label text-slate-700"
-                  >
-                    Tax ID Number
-                  </label>
-                  <input className="form-control p-2 border outline-none" />
-                </div>
-                <div className="intro-y col-span-12 md:col-span-6">
-                  <label
-                    htmlFor="input-wizard-1"
-                    className="form-label text-slate-700"
-                  >
-                    Drivers license
-                  </label>
-                  <input className="form-control p-2 border outline-none" />
-                </div>
-                <div className="intro-y col-span-12 md:col-span-6">
-                  <label
-                    htmlFor="input-wizard-1"
-                    className="form-label text-slate-700"
-                  >
-                    Bank or voided check
-                  </label>
-                  <input className="form-control p-2 border outline-none" />
-                </div>
-                {/* <div className="intro-y col-span-6 sm:col-span-6">
-                  <label htmlFor="input-wizard-1" className="form-label">
-                    Employee Name
-                  </label>
-                  <select className="form-select col-span-3">
-                    <option value="">jeph</option>
-                  </select>
-                </div> */}
               </div>
               <div className="px-5 mt-5 mb-5 text-center">
-                <button className="btn btn-primary w-24 ml-2">Submit</button>
-                <button className="btn btn-secondary w-24 ml-2">Cancel</button>
+                <button
+                  className="btn btn-secondary w-24 ml-2 "
+                  onClick={() => setShowOnsiteSupportModal(false)}
+                >
+                  Close
+                </button>
               </div>
             </>
           </Modal.Body>

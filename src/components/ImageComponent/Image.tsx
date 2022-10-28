@@ -14,8 +14,8 @@ const Images = () => {
       for (let i = 0; i < files?.length; i++) {
         filesArr.push(URL.createObjectURL(files[i]));
       }
-      setImageFiles([...imageFiles, ...filesArr]);
     }
+    setImageFiles([...imageFiles, ...filesArr]);
   };
 
   const handleClickUpload = (e: { preventDefault: () => void }) => {

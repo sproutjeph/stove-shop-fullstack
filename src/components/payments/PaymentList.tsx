@@ -1,66 +1,66 @@
-import React from "react";
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  PlusIcon,
 } from "@heroicons/react/24/outline";
-
-const supportData = [
-  { id: "1", software: "software-1", info: "info", text: "text" },
-  { id: "2", software: "software-2", info: "info", text: "text" },
-  { id: "3", software: "software-3", info: "info", text: "text" },
-  { id: "4", software: "software-4", info: "info", text: "text" },
-  { id: "5", software: "software-5", info: "info", text: "text" },
-  { id: "6", software: "software-6", info: "info", text: "text" },
-  { id: "7", software: "software-7", info: "info", text: "text" },
-  { id: "8", software: "software-8", info: "info", text: "text" },
+const paymentData = [
+  { id: "1", payment: "payment-1", info: "info", text: "text" },
+  { id: "2", payment: "payment-2", info: "info", text: "text" },
+  { id: "3", payment: "payment-3", info: "info", text: "text" },
+  { id: "4", payment: "payment-4", info: "info", text: "text" },
+  { id: "5", payment: "payment-5", info: "info", text: "text" },
+  { id: "6", payment: "payment-6", info: "info", text: "text" },
+  { id: "7", payment: "payment-7", info: "info", text: "text" },
 ];
 
-const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
+const PaymentList = () => {
   return (
     <>
-      <section className="h-screen" id="software">
+      <section className="" id="payment">
         <div className="">
-          <h2 className="text-4xl text-center text-primary tracking-wider">
-            Software Add-Ons
+          <h2 className="text-4xl text-center text-primary tracking-wide">
+            Payments
           </h2>
         </div>
-        <div className="px-4 md:px-8 grid grid-cols-12 gap-6 mt-5 ">
-          <div className="intro-y col-span-12 overflow-auto lg:overflow-visible mb-8">
+        <div className="px-4 md:px-8 grid grid-cols-12 gap-6 mt-2 md:mt-0 ">
+          <div className="intro-y col-span-12 overflow-auto lg:overflow-visible">
             <table className=" table table-report -mt-2">
               <thead>
                 <tr>
-                  <th className=" whitespace-nowrap">Softwares</th>
-                  {/* <th className="text-center whitespace-nowrap">Add Info</th> */}
-                  {/* <th className="text-center whitespace-nowrap">Info</th> */}
-                  {/* <th className="text-center whitespace-nowrap">Test</th> */}
+                  <th className=" whitespace-nowrap">Payments</th>
+                  <th className="text-center whitespace-nowrap">Visa card </th>
+                  <th className="text-center whitespace-nowrap">Amex card</th>
+                  <th className="text-center whitespace-nowrap">Rate</th>
 
                   <th className="text-center whitespace-nowrap">Active</th>
                 </tr>
               </thead>
               <tbody>
-                {supportData.map((software, index) => (
-                  <tr key={software.id + index} className="intro-x">
+                {paymentData.map((payment, index) => (
+                  <tr key={payment.id + index} className="intro-x">
                     <td className="">
                       <button
                         className="font-medium whitespace-nowrap"
-                        onClick={() => setShowSoftwareAddOnModal(true)}
+                        // onClick={() => setShowOnsiteSupportModal(true)}
                       >
-                        {software.software}
+                        {payment.payment}
                       </button>
                     </td>
-                    {/* <td className="text-center">
-                      <button
-                        className="btn btn-outline border-2 border-dashed "
-                        onClick={() => setShowSoftwareAddOnModal(true)}
-                      >
-                        <PlusIcon className="h-6 w-6" />
-                      </button>
-                    </td> */}
-                    {/* <td className="text-center ">{software.info}</td> */}
-                    {/* <td className="text-center ">{software.text}</td> */}
+
+                    <td className="text-center ">
+                      <select name="" id="" className="form-control w-40">
+                        <option value="">Present</option>
+                        <option value="">Not Present</option>
+                      </select>
+                    </td>
+                    <td className="text-center ">
+                      <select name="" id="" className="form-control w-40">
+                        <option value="">Present</option>
+                        <option value="">Not Present</option>
+                      </select>
+                    </td>
+                    <td className="text-center ">5</td>
 
                     <td className="">
                       <div className="justify-center form-check form-switch">
@@ -68,9 +68,8 @@ const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
                           id="product-status-active"
                           className="check-box"
                           type="checkbox"
-                          // checked={true}
                           onChange={(e: any) => {
-                            // console.log(e.target.checked);
+                            console.log(e.target.checked);
                           }}
                         />
                       </div>
@@ -146,4 +145,4 @@ const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
   );
 };
 
-export default SoftWareAddOnList;
+export default PaymentList;

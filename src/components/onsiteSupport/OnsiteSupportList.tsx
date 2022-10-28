@@ -8,14 +8,14 @@ import {
 } from "@heroicons/react/24/outline";
 
 const supportData = [
-  { id: "1", support: "sopport-1", info: "info", text: "text" },
-  { id: "2", support: "sopport-2", info: "info", text: "text" },
-  { id: "3", support: "sopport-3", info: "info", text: "text" },
-  { id: "4", support: "sopport-4", info: "info", text: "text" },
-  { id: "5", support: "sopport-5", info: "info", text: "text" },
-  { id: "6", support: "sopport-6", info: "info", text: "text" },
-  { id: "7", support: "sopport-7", info: "info", text: "text" },
-  { id: "8", support: "sopport-8", info: "info", text: "text" },
+  { id: "1", support: "support-1", info: "info", text: "text" },
+  { id: "2", support: "support-2", info: "info", text: "text" },
+  { id: "3", support: "support-3", info: "info", text: "text" },
+  { id: "4", support: "support-4", info: "info", text: "text" },
+  { id: "5", support: "support-5", info: "info", text: "text" },
+  { id: "6", support: "support-6", info: "info", text: "text" },
+  { id: "7", support: "support-7", info: "info", text: "text" },
+  { id: "8", support: "support-8", info: "info", text: "text" },
 ];
 
 const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
@@ -44,7 +44,10 @@ const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
                 {supportData.map((support, index) => (
                   <tr key={support.id + index} className="intro-x">
                     <td className="">
-                      <button className="font-medium whitespace-nowrap">
+                      <button
+                        className="font-medium whitespace-nowrap"
+                        onClick={() => setShowOnsiteSupportModal(true)}
+                      >
                         {support.support}
                       </button>
                     </td>
@@ -65,7 +68,6 @@ const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
                           id="product-status-active"
                           className="check-box"
                           type="checkbox"
-                          checked={true}
                           onChange={(e: any) => {
                             console.log(e.target.checked);
                           }}
