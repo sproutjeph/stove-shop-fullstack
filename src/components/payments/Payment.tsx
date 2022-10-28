@@ -1,18 +1,44 @@
 import { useState } from "react";
 
+interface IValues {
+  tiered: { qualified: number; nonQualified: number; isSelected: boolean };
+  ic020: { rate: number; fees: number; isSelected: boolean };
+  ic030: { rate: number; fees: number; isSelected: boolean };
+}
+
 const Payment = () => {
-  const [tried, setTried] = useState(false);
-  const [ic, setIc] = useState(true);
+  const [values, setValues] = useState<IValues>({
+    tiered: { qualified: 2.6, nonQualified: 2.6, isSelected: false },
+    ic020: { rate: 0.2, fees: 0.1, isSelected: true },
+    ic030: { rate: 0.3, fees: 0.0, isSelected: false },
+  });
+
   const onchangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value === "tried") {
-      setTried(true);
-    } else {
-      setTried(false);
+    console.log(e.target.id);
+
+    if (e.target.value === "tiered") {
+      setValues({
+        ...values,
+        ic020: { ...values.ic020, isSelected: false },
+        ic030: { ...values.ic030, isSelected: false },
+        tiered: { ...values.tiered, isSelected: true },
+      });
     }
-    if (e.target.value === "ic") {
-      setIc(true);
-    } else {
-      setIc(false);
+    if (e.target.value === "ic020") {
+      setValues({
+        ...values,
+        tiered: { ...values.tiered, isSelected: false },
+        ic030: { ...values.ic030, isSelected: false },
+        ic020: { ...values.ic020, isSelected: true },
+      });
+    }
+    if (e.target.value === "ic030") {
+      setValues({
+        ...values,
+        ic020: { ...values.ic020, isSelected: false },
+        tiered: { ...values.tiered, isSelected: false },
+        ic030: { ...values.ic030, isSelected: true },
+      });
     }
   };
   return (
@@ -34,87 +60,173 @@ const Payment = () => {
                 className="form-control"
                 onChange={(e) => onchangeHandler(e)}
               >
-                <option value="tried">Tiered</option>
-                <option value="ic">ic 0.10</option>
-                <option value="ic">ic 0.20</option>
-                <option value="ic">ic 0.30</option>
-                <option value="flat">flat</option>
+                <option value="flat" id="flat">
+                  Flat Rate
+                </option>
+                <option value="tiered">Tiered</option>
+                <option value="ic020">Ic+ .20/10trans</option>
+                <option value="ic030">Ic 0.30/0trans</option>
+                <option value="icplus">Ic Plus</option>
+                <option value="iccustom">Custom</option>
+                {/* <option value={values.value}>Custom</option> */}
               </select>
             </div>
             <div />
-            {ic ? (
+            {values.ic020.isSelected || values.ic030.isSelected ? (
               <>
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Visa card present Rate
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.rate
+                        : values.ic030.rate
+                    }
+                    readOnly
+                  />
                 </div>
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Visa card not present Rate
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.rate
+                        : values.ic030.rate
+                    }
+                    readOnly
+                  />
                 </div>
 
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Amex card not present Rate
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.rate
+                        : values.ic030.rate
+                    }
+                    readOnly
+                  />
                 </div>
 
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Amex card not present Rate
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.rate
+                        : values.ic030.rate
+                    }
+                    readOnly
+                  />
                 </div>
 
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
-                    Visa card present trans Fee
+                    Visa card present Fee
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.fees
+                        : values.ic030.fees
+                    }
+                    readOnly
+                  />
                 </div>
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Visa card not present Fee
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.fees
+                        : values.ic030.fees
+                    }
+                    readOnly
+                  />
                 </div>
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Amex card not present Fee
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.fees
+                        : values.ic030.fees
+                    }
+                    readOnly
+                  />
                 </div>
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Amex card not present Fee
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={
+                      values.ic020.isSelected
+                        ? values.ic020.fees
+                        : values.ic030.fees
+                    }
+                    readOnly
+                  />
                 </div>
               </>
             ) : null}
 
-            {tried ? (
+            {values.tiered.isSelected ? (
               <>
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Qualified
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={values.tiered.qualified}
+                    readOnly
+                  />
                 </div>
                 <div className="">
                   <label htmlFor="input-wizard-1" className="form-label">
                     Non qualified
                   </label>
-                  <input type="text" className="form-control"></input>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={values.tiered.nonQualified}
+                    readOnly
+                  />
                 </div>
               </>
             ) : null}
-            <button className="btn btn-primary w-40">Submit</button>
+            <button className="btn btn-primary w-40">Next</button>
           </div>
         </div>
       </section>
