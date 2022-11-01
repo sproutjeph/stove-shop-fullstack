@@ -8,14 +8,54 @@ import {
 } from "@heroicons/react/24/outline";
 
 const supportData = [
-  { id: "1", software: "software-1", info: "info", text: "text" },
-  { id: "2", software: "software-2", info: "info", text: "text" },
-  { id: "3", software: "software-3", info: "info", text: "text" },
-  { id: "4", software: "software-4", info: "info", text: "text" },
-  { id: "5", software: "software-5", info: "info", text: "text" },
-  { id: "6", software: "software-6", info: "info", text: "text" },
-  { id: "7", software: "software-7", info: "info", text: "text" },
-  { id: "8", software: "software-8", info: "info", text: "text" },
+  {
+    id: "1",
+    software: "software-1",
+    defaultSoftware: "defaultSoftware1",
+    text: "text",
+  },
+  {
+    id: "2",
+    software: "software-2",
+    defaultSoftware: "defaultSoftware2",
+    text: "text",
+  },
+  {
+    id: "3",
+    software: "software-3",
+    defaultSoftware: "defaultSoftware3",
+    text: "text",
+  },
+  {
+    id: "4",
+    software: "software-4",
+    defaultSoftware: "defaultSoftware4",
+    text: "text",
+  },
+  {
+    id: "5",
+    software: "software-5",
+    defaultSoftware: "defaultSoftware5",
+    text: "text",
+  },
+  {
+    id: "6",
+    software: "software-6",
+    defaultSoftware: "defaultSoftware6",
+    text: "text",
+  },
+  {
+    id: "7",
+    software: "software-7",
+    defaultSoftware: "defaultSoftware7",
+    text: "text",
+  },
+  {
+    id: "8",
+    software: "software-8",
+    defaultSoftware: "defaultSoftware8",
+    text: "text",
+  },
 ];
 
 const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
@@ -33,7 +73,7 @@ const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
               <thead>
                 <tr>
                   <th className=" whitespace-nowrap">Softwares</th>
-                  {/* <th className="text-center whitespace-nowrap">Add Info</th> */}
+                  {/* <th className=" whitespace-nowrap">Software Included</th> */}
                   {/* <th className="text-center whitespace-nowrap">Info</th> */}
                   {/* <th className="text-center whitespace-nowrap">Test</th> */}
 
@@ -51,14 +91,16 @@ const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
                         {software.software}
                       </button>
                     </td>
-                    {/* <td className="text-center">
+
+                    {/* <td className="">
                       <button
                         className="btn btn-outline border-2 border-dashed "
                         onClick={() => setShowSoftwareAddOnModal(true)}
                       >
-                        <PlusIcon className="h-6 w-6" />
+                        {software.defaultSoftware}
                       </button>
                     </td> */}
+
                     {/* <td className="text-center ">{software.info}</td> */}
                     {/* <td className="text-center ">{software.text}</td> */}
 

@@ -57,6 +57,18 @@ const CheckOut = () => {
               </label>
               <input type="text" className="form-control" />
             </div>
+            <div className=" col-span-6">
+              <label htmlFor="input-wizard-1" className="form-label">
+                Business owner
+              </label>
+              <input type="text" className="form-control" />
+            </div>
+            <div className=" col-span-6">
+              <label htmlFor="input-wizard-1" className="form-label">
+                Percentage of business owned
+              </label>
+              <input type="text" className="form-control" />
+            </div>
             <div className=" col-span-full w-full">
               <label htmlFor="update-profile-form-2" className="form-label">
                 Upload drivers license
