@@ -7,12 +7,13 @@ import {
 } from "@heroicons/react/24/outline";
 import logoUrl from "@/assets/images/logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../stores/hooks";
+import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import { logout } from "../../featuers/auth/authSlice";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const navigateTo = useNavigate();
+  const { totalCartItems } = useAppSelector((state) => state.cart);
 
   const user = {
     name: "Arron M",
@@ -85,7 +86,7 @@ const Navbar = () => {
                           onClick={() => navigateTo("/cart")}
                         />
                         <span className="inline-block absolute w-5 h-5 rounded-full right-[-9px] top-[-6px] bg-white text-primary  items-center ">
-                          1
+                          {totalCartItems}
                         </span>
                       </button>
 
@@ -195,7 +196,7 @@ const Navbar = () => {
                         onClick={() => navigateTo("/cart")}
                       />
                       <span className="inline-block absolute w-5 h-5 rounded-full right-[-9px] top-[-6px] bg-white text-primary  items-center ">
-                        1
+                        {totalCartItems}
                       </span>
                     </button>
                   </div>

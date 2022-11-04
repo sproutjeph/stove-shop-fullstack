@@ -1,12 +1,18 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import itemImg1 from "@/assets/images/counter-top-kit.jpg";
-import itemImg2 from "@/assets/images/guest-service-kit.jpg";
-import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useAppSelector, useAppDispatch } from "../../stores/hooks";
+import {
+  increaseItem,
+  decreaseItem,
+  calculateTotals,
+  removeItem,
+} from "../../featuers/cart/cartSlice";
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 
 const CartPage = () => {
   const navigateTo = useNavigate();
-  const [quantity, setQuantity] = useState(1);
+  const dispath = useAppDispatch();
+  const { cartItems, totalPrice } = useAppSelector((state) => state.cart);
 
   return (
     <>
@@ -28,123 +34,94 @@ const CartPage = () => {
           <span>$0.0</span>
         </div>
       </div>
-      <div className="p-8 ">
-        <div className=" max-w-xl md:max-w-2xl p-4 text-center mx-auto">
-          <h2 className="text-4xl font-thin tracking-wide">
+      <div className="p-4 md:p-8 ">
+        <div className=" max-w-xl md:max-w-2xl text-center mx-auto">
+          <h2 className="text-3xl font-thin tracking-wide">
             Your Cart Looks Good
           </h2>
           <h6 className="text-sm mt-2">
             Review your order, then continue to checkout.
           </h6>
         </div>
+        <ul className="grid xl:grid-cols-2 gap-4 justify-center">
+          {cartItems.map((item) => (
+            <div
+              key={item.id}
+              className="grid md:grid-cols-2 max-w-2xl bg-white mt-4 p-4 rounded-md"
+            >
+              <div className="">
+                <div className="max-w-lg mb-2 mx-auto md:mx-0 md:w-60 h-48">
+                  <img
+                    src={itemImg1}
+                    alt={item.name}
+                    className="rounded-md h-full w-full "
+                  />
+                </div>
+                <button
+                  className="btn hidden md:block bg-red-200 mt-12"
+                  onClick={() => {
+                    dispath(removeItem({ id: item.id }));
+                    dispath(calculateTotals());
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
 
-        <div className=" mt-4 md:flex gap-8 justify-center border-b-[1px]  border-slate-500 pb-6 md:pb-12">
-          <div className="max-w-lg mb-2 mx-auto md:mx-0 md:w-72 h-56">
-            <img src={itemImg1} alt="" className="rounded-md h-full w-full " />
-          </div>
-          <div className="text-center ">
-            <h2 className="text-primary tracking-wider text-lg md:text-xl">
-              Stove CounterTop 2 $409+ $50 <span className="text-sm">/mo</span>
-            </h2>
-            <p className="text-xs max-w-[22rem]  mt-2 md:text-sm ">
-              Inside, outside, drive-through, curbside - Toast Go® 2 mobile
-              handhelds are fast, safe, flexible and ready to help your business
-              adapt.
-            </p>
+              <div className="max-w-md">
+                <div className="text-center md:text-left">
+                  <h2 className="text-primary tracking-wider text-2xl md:text-2xl">
+                    {item.name}
+                  </h2>
+                  <p className=" text-sm  mt-2 md:text-sm ">
+                    {item.description ||
+                      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, fugiat. adipisicing elit. Harum, fugiat. elit. Harum, fugiat. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, fugiat. adipisicing elit. Harum, fugiat. elit. Harum, fugiat. "}
+                  </p>
+                </div>
 
-            <div className="flex gap-8 mb-4 items-center bg-gray-300 w-full rounded-md mt-6">
-              <button
-                className=" tracking-widest bg-white py-2 px-10 rounded-md rounded-r-none"
-                onClick={() => setQuantity(quantity - 1)}
-              >
-                <MinusIcon className="w-6 h-6" />
-              </button>
-              <span className="text-base py-2 px-[21px] w-[25px] text-green-700">
-                {quantity}
-              </span>
-              <button
-                className="py-2 px-10 tracking-widest bg-green-500 text-white"
-                onClick={() => setQuantity(quantity + 1)}
-              >
-                <PlusIcon className="w-6 h-6" />
-              </button>
-              <button
-                className="py-2 px-10 tracking-widest bg-warning text-white rounded-md rounded-l-none -ml-8"
-                // onClick={() => setQuantity(quantity + 1)}
-              >
-                <TrashIcon className="w-6 h-6" />
-              </button>
+                <div className="flex flex-col gap-y-8 mb-4 mt-6 items-center md:items-start ">
+                  <h2 className="text-2xl tracking-widest">
+                    Price : ${item.price}
+                  </h2>
+                  <div className="flex gap-4">
+                    <button
+                      className="py-1 px-2 rounded-md bg-warning"
+                      onClick={() => {
+                        dispath(decreaseItem({ id: item.id }));
+                        dispath(calculateTotals());
+                      }}
+                    >
+                      <MinusIcon className="w-6 h-6" />
+                    </button>
+                    <span className="text-lg  text-green-700">
+                      {item.amount}
+                    </span>
+                    <button
+                      className="py-1 px-2 rounded-md bg-green-500 text-white"
+                      onClick={() => {
+                        dispath(increaseItem({ id: item.id }));
+                        dispath(calculateTotals());
+                      }}
+                    >
+                      <PlusIcon className="w-6 h-6" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
+          ))}
+        </ul>
 
-            <h2 className="text-2xl tracking-widest">Amount : $250</h2>
-          </div>
-        </div>
-        <div className=" mt-4 md:flex gap-8 justify-center border-b-[1px]  border-slate-500 pb-6 md:pb-12">
-          <div className="max-w-lg mb-2 mx-auto md:mx-0 md:w-72 h-56">
-            <img src={itemImg2} alt="" className="rounded-md h-full w-full " />
-          </div>
-          <div className="text-center ">
-            <h2 className="text-primary tracking-wider text-lg md:text-xl">
-              Stove POS 2 $409+ $50 <span className="text-sm">/mo</span>
-            </h2>
-            <p className="text-xs max-w-[22rem]  mt-2 md:text-sm ">
-              Inside, outside, drive-through, curbside - Toast Go® 2 mobile
-              handhelds are fast, safe, flexible and ready to help your business
-              adapt.
-            </p>
-
-            <div className="flex gap-8 mb-4 items-center bg-gray-300 w-full rounded-md mt-6">
-              <button
-                className=" tracking-widest bg-white py-2 px-10 rounded-md rounded-r-none"
-                onClick={() => setQuantity(quantity - 1)}
-              >
-                <MinusIcon className="w-6 h-6" />
-              </button>
-              <span className="text-base py-2 px-[21px] w-[25px] text-green-700">
-                {quantity}
-              </span>
-              <button
-                className="py-2 px-10 tracking-widest bg-green-500 text-white"
-                onClick={() => setQuantity(quantity + 1)}
-              >
-                <PlusIcon className="w-6 h-6" />
-              </button>
-              <button
-                className="py-2 px-10 tracking-widest bg-warning text-white rounded-md rounded-l-none -ml-8"
-                // onClick={() => setQuantity(quantity + 1)}
-              >
-                <TrashIcon className="w-6 h-6" />
-              </button>
-            </div>
-
-            <h2 className="text-2xl tracking-widest">Amount : $200</h2>
-          </div>
-        </div>
-
-        <div className="mt-6 flex justify-between mx-auto  max-w-3xl">
-          <button
-            className="py-2 px-4 tracking-widest bg-primary text-white rounded-md rounded-r-none "
-            onClick={() => navigateTo("/")}
-          >
-            Go to Products
-          </button>
-          <button
-            className="py-2 px-4 tracking-widest bg-warning text-white rounded-md rounded-l-none"
-            // onClick={() => setQuantity(quantity + 1)}
-          >
-            Clear Cart
-          </button>
-        </div>
         <div className=" my-8 border border-slate-500 p-4  max-w-md md:ml-auto ">
           <div className="grid grid-cols-2 gap-2 justify-center place-items-center text-lg border-slate-500 tracking-widest border-b-[1px] pb-4">
             <h2 className="">Subtotal</h2>
-            <h2 className="text-green-500">$ 300.87</h2>
+            <h2 className="text-green-500">$ {totalPrice}</h2>
             <h2 className="">Tax</h2>
-            <h2 className="text-green-500">$ 30.87</h2>
+            <h2 className="text-green-500">$ {30.0}</h2>
           </div>
           <div className="flex justify-between text-black text-2xl mt-4">
             <h1 className="">Order Total :</h1>
-            <h1 className="">$ 78.76</h1>
+            <h1 className="">$ {totalPrice + 30}</h1>
           </div>
         </div>
         <div className="flex">

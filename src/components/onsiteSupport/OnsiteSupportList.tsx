@@ -1,4 +1,8 @@
 import React from "react";
+import imgaeHolder from "../../assets/images/200x200.jpg";
+import { useAppSelector, useAppDispatch } from "../../stores/hooks";
+import { addToCart } from "../../featuers/cart/cartSlice";
+
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
@@ -6,19 +10,20 @@ import {
   ChevronRightIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
-
-const supportData = [
-  { id: "1", support: "support-1", info: "info", text: "text" },
-  { id: "2", support: "support-2", info: "info", text: "text" },
-  { id: "3", support: "support-3", info: "info", text: "text" },
-  { id: "4", support: "support-4", info: "info", text: "text" },
-  { id: "5", support: "support-5", info: "info", text: "text" },
-  { id: "6", support: "support-6", info: "info", text: "text" },
-  { id: "7", support: "support-7", info: "info", text: "text" },
-  { id: "8", support: "support-8", info: "info", text: "text" },
-];
+import { IProduct } from "../../utils/types";
 
 const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
+  const dispath = useAppDispatch();
+  const { products } = useAppSelector((state) => state.product);
+
+  function onChangeHandler(
+    e: React.ChangeEvent<HTMLInputElement>,
+    support: IProduct
+  ) {
+    if (e.target.checked === true) {
+      dispath(addToCart({ cartItem: support, qty: 1 }));
+    }
+  }
   return (
     <>
       <section className="" id="support">
@@ -32,50 +37,61 @@ const OnsiteSupportList = ({ setShowOnsiteSupportModal }: any) => {
             <table className=" table table-report -mt-2">
               <thead>
                 <tr>
-                  <th className=" whitespace-nowrap">Supports</th>
-                  {/* <th className="text-center whitespace-nowrap">Add Info</th> */}
-                  {/* <th className="text-center whitespace-nowrap">Info</th> */}
-                  {/* <th className="text-center whitespace-nowrap">Test</th> */}
-
+                  <th className=" whitespace-nowrap">Image</th>
+                  <th className="text-center whitespace-nowrap">Support</th>
+                  <th className="text-center whitespace-nowrap">Description</th>
+                  <th className="text-center whitespace-nowrap">Part Number</th>
+                  <th className="text-center whitespace-nowrap">Price</th>
+                  <th className="text-center whitespace-nowrap">Category</th>
                   <th className="text-center whitespace-nowrap">Active</th>
                 </tr>
               </thead>
               <tbody>
-                {supportData.map((support, index) => (
-                  <tr key={support.id + index} className="intro-x">
-                    <td className="">
-                      <button
-                        className="font-medium whitespace-nowrap"
-                        onClick={() => setShowOnsiteSupportModal(true)}
-                      >
-                        {support.support}
-                      </button>
-                    </td>
-                    {/* <td className="text-center">
-                      <button
-                        className="btn btn-outline border-2 border-dashed "
-                        onClick={() => setShowOnsiteSupportModal(true)}
-                      >
-                        <PlusIcon className="h-6 w-6" />
-                      </button>
-                    </td> */}
-                    {/* <td className="text-center ">{support.info}</td> */}
-                    {/* <td className="text-center ">{support.text}</td> */}
+                {products
+                  .filter((product) => product.category === "support")
+                  .map((support) => (
+                    <tr key={support.id} className="intro-x">
+                      <td className="text-center">
+                        <div className="flex">
+                          <div className="w-10 h-10 image-fit zoom-in">
+                            <img
+                              alt=""
+                              className="rounded-full"
+                              src={imgaeHolder || support.product_image}
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <button
+                          className="font-medium whitespace-nowrap"
+                          onClick={() => setShowOnsiteSupportModal(true)}
+                        >
+                          {support.name}
+                        </button>
+                      </td>
+                      <td className="text-center">
+                        {support.description || support.name}
+                      </td>
+                      <td className="text-center">{support.part_number}</td>
+                      <td className="text-center ">${support.price}</td>
+                      <td className="text-center ">{support.category}</td>
 
-                    <td className="">
-                      <div className="justify-center form-check form-switch">
-                        <input
-                          id="product-status-active"
-                          className="check-box"
-                          type="checkbox"
-                          onChange={(e: any) => {
-                            console.log(e.target.checked);
-                          }}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      <td className="">
+                        <div className="justify-center form-check form-switch">
+                          <input
+                            id="product-status-active"
+                            className="check-box"
+                            type="checkbox"
+                            onChange={(e) => {
+                              onChangeHandler(e, support);
+                              console.log(e.target.checked);
+                            }}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

@@ -1,4 +1,7 @@
 import React from "react";
+import imgaeHolder from "../../assets/images/200x200.jpg";
+import { useAppSelector, useAppDispatch } from "../../stores/hooks";
+import { addToCart, removeItem } from "../../featuers/cart/cartSlice";
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
@@ -6,59 +9,23 @@ import {
   ChevronRightIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
-
-const supportData = [
-  {
-    id: "1",
-    software: "software-1",
-    defaultSoftware: "defaultSoftware1",
-    text: "text",
-  },
-  {
-    id: "2",
-    software: "software-2",
-    defaultSoftware: "defaultSoftware2",
-    text: "text",
-  },
-  {
-    id: "3",
-    software: "software-3",
-    defaultSoftware: "defaultSoftware3",
-    text: "text",
-  },
-  {
-    id: "4",
-    software: "software-4",
-    defaultSoftware: "defaultSoftware4",
-    text: "text",
-  },
-  {
-    id: "5",
-    software: "software-5",
-    defaultSoftware: "defaultSoftware5",
-    text: "text",
-  },
-  {
-    id: "6",
-    software: "software-6",
-    defaultSoftware: "defaultSoftware6",
-    text: "text",
-  },
-  {
-    id: "7",
-    software: "software-7",
-    defaultSoftware: "defaultSoftware7",
-    text: "text",
-  },
-  {
-    id: "8",
-    software: "software-8",
-    defaultSoftware: "defaultSoftware8",
-    text: "text",
-  },
-];
+import { IProduct } from "../../utils/types";
 
 const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
+  const dispath = useAppDispatch();
+  const { products } = useAppSelector((state) => state.product);
+
+  function onChangeHandler(
+    e: React.ChangeEvent<HTMLInputElement>,
+    cartItem: IProduct
+  ) {
+    if (e.target.checked === true) {
+      dispath(addToCart({ cartItem: cartItem, qty: 1 }));
+    }
+    // if (!e.target.checked ) {
+    //   dispath(addToCart({ cartItem: cartItem, qty: 1 }));
+    // }
+  }
   return (
     <>
       <section className="h-screen" id="software">
@@ -72,53 +39,64 @@ const SoftWareAddOnList = ({ setShowSoftwareAddOnModal }: any) => {
             <table className=" table table-report -mt-2">
               <thead>
                 <tr>
-                  <th className=" whitespace-nowrap">Softwares</th>
-                  {/* <th className=" whitespace-nowrap">Software Included</th> */}
-                  {/* <th className="text-center whitespace-nowrap">Info</th> */}
-                  {/* <th className="text-center whitespace-nowrap">Test</th> */}
+                  <th className=" whitespace-nowrap">Image</th>
+                  <th className="text-center whitespace-nowrap">Name</th>
+                  <th className="text-center whitespace-nowrap">Description</th>
+                  <th className="text-center whitespace-nowrap">Part Number</th>
+                  <th className="text-center whitespace-nowrap">Price</th>
+                  <th className="text-center whitespace-nowrap">Category</th>
 
                   <th className="text-center whitespace-nowrap">Active</th>
                 </tr>
               </thead>
               <tbody>
-                {supportData.map((software, index) => (
-                  <tr key={software.id + index} className="intro-x">
-                    <td className="">
-                      <button
-                        className="font-medium whitespace-nowrap"
-                        onClick={() => setShowSoftwareAddOnModal(true)}
-                      >
-                        {software.software}
-                      </button>
-                    </td>
+                {products
+                  .filter((product) => product.category === "software")
+                  .map((software) => (
+                    <tr key={software.id} className="intro-x">
+                      <td className="text-center">
+                        <div className="flex">
+                          <div className="w-10 h-10 image-fit zoom-in">
+                            <img
+                              alt=""
+                              className="rounded-full"
+                              src={imgaeHolder || software.product_image}
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <button
+                          className="font-medium whitespace-nowrap"
+                          onClick={() => setShowSoftwareAddOnModal(true)}
+                        >
+                          {software.name}
+                        </button>
+                      </td>
 
-                    {/* <td className="">
-                      <button
-                        className="btn btn-outline border-2 border-dashed "
-                        onClick={() => setShowSoftwareAddOnModal(true)}
-                      >
-                        {software.defaultSoftware}
-                      </button>
-                    </td> */}
+                      <td className="text-center">
+                        {software.description || software.name}
+                      </td>
 
-                    {/* <td className="text-center ">{software.info}</td> */}
-                    {/* <td className="text-center ">{software.text}</td> */}
+                      <td className="text-center ">{software.part_number}</td>
+                      <td className="text-center ">${software.price}</td>
+                      <td className="text-center ">{software.category}</td>
 
-                    <td className="">
-                      <div className="justify-center form-check form-switch">
-                        <input
-                          id="product-status-active"
-                          className="check-box"
-                          type="checkbox"
-                          // checked={true}
-                          onChange={(e: any) => {
-                            // console.log(e.target.checked);
-                          }}
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      <td className="">
+                        <div className="justify-center form-check form-switch">
+                          <input
+                            id="product-status-active"
+                            className="check-box"
+                            type="checkbox"
+                            onChange={(e) => {
+                              onChangeHandler(e, software);
+                              console.log(e.target.checked);
+                            }}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

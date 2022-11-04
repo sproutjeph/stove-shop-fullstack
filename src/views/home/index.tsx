@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   OnsiteSupportList,
@@ -23,16 +23,17 @@ import {
   RocketLaunchIcon,
   CheckBadgeIcon,
 } from "@heroicons/react/24/outline";
-import { useAppDispatch } from "../../stores/hooks";
+import { useAppDispatch, useAppSelector } from "../../stores/hooks";
 import {
   openBasicPricingModal,
   openProPricingModal,
   openUltimatePricingModal,
 } from "../../featuers/modal/modalSlice";
-
+import { calculateTotals } from "../../featuers/cart/cartSlice";
 const HomePage = () => {
   const navigateTo = useNavigate();
   const dispatch = useAppDispatch();
+  const { cartItems } = useAppSelector((state) => state.cart);
 
   const [showKit, setShowkit] = useState({
     showCountertopKit: true,
@@ -50,6 +51,10 @@ const HomePage = () => {
   const [showOnsiteSupportModal, setShowOnsiteSupportModal] = useState(false);
   const [showSoftwareAddOnModal, setShowSoftwareAddOnModal] = useState(false);
   const [showProductDetailsModal, setShowProductDetailsModal] = useState(false);
+
+  useEffect(() => {
+    dispatch(calculateTotals());
+  }, [cartItems]);
 
   return (
     <>

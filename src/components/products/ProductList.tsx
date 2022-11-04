@@ -1,17 +1,31 @@
 import { useSearchParams } from "react-router-dom";
-import { ProductData } from "../../utils/data";
-import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../stores/hooks";
+import imgaeHolder from "../../assets/images/200x200.jpg";
+import { addToCart } from "../../featuers/cart/cartSlice";
+import { useAppDispatch } from "../../stores/hooks";
 import {
   ChevronLeftIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
-import imgaeHolder from "../../assets/images/200x200.jpg";
+import { IProduct } from "../../utils/types";
+import React, { useState } from "react";
+
 const ProductList = ({ setShowProductDetailsModal }: any) => {
-  const navigateTo = useNavigate();
+  const [productQty, setProductQty] = useState("");
+  const dispath = useAppDispatch();
   const [params, setParams] = useSearchParams();
-  // console.log(params.get("productId"));
+
+  const { products } = useAppSelector((state) => state.product);
+
+  function onChangeHandler(
+    cartItem: IProduct,
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) {
+    const qty = Number(e.target.value);
+    dispath(addToCart({ cartItem, qty }));
+  }
 
   return (
     <section className="h-screen" id="product">
@@ -27,7 +41,7 @@ const ProductList = ({ setShowProductDetailsModal }: any) => {
               <tr>
                 <th className=" whitespace-nowrap">Product Image</th>
                 <th className=" whitespace-nowrap">Product NAME</th>
-                <th className="text-center whitespace-nowrap">Product ID</th>
+                <th className="text-center whitespace-nowrap">Description</th>
                 <th className="text-center whitespace-nowrap">Part Number</th>
                 <th className="text-center whitespace-nowrap">Product Price</th>
                 <th className="text-center whitespace-nowrap">
@@ -37,52 +51,63 @@ const ProductList = ({ setShowProductDetailsModal }: any) => {
               </tr>
             </thead>
             <tbody>
-              {ProductData.map((product, index) => (
-                <tr key={product.PartNumber + index} className="intro-x">
-                  <td className="text-center">
-                    <div className="flex">
-                      <div className="w-10 h-10 image-fit zoom-in">
-                        <img
-                          alt=""
-                          className="rounded-full"
-                          src={imgaeHolder}
-                        />
+              {products
+                .filter((product) => product.category === "product")
+                .map((product) => (
+                  <tr key={product.id} className="intro-x">
+                    <td className="text-center">
+                      <div className="flex">
+                        <div className="w-10 h-10 image-fit zoom-in">
+                          <img
+                            alt=""
+                            className="rounded-full"
+                            src={imgaeHolder || product.product_image}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </td>
+                    </td>
 
-                  <td className="">
-                    <button
-                      className="font-medium whitespace-nowrap"
-                      onClick={() => {
-                        // setParams({
-                        //   ...params,
-                        //   productId: `${product.productId}`,
-                        // });
-                        // navigateTo("/product-details");
-                        setShowProductDetailsModal(true);
-                      }}
-                    >
-                      {product.productName}
-                    </button>
-                  </td>
-                  <td className="text-center">{product.productId}</td>
-                  <td className="text-center ">{product.PartNumber}</td>
-                  <td className="text-center ">{product.productPrice}</td>
-                  <td className="text-center ">USD</td>
+                    <td className="">
+                      <button
+                        className="font-medium whitespace-nowrap"
+                        onClick={() => {
+                          setParams({
+                            ...params,
+                            productId: `${product.id}`,
+                          });
 
-                  <td className="text-center">
-                    <select name="" id="" className="form-control">
-                      <option value="">0</option>
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                      <option value="">4</option>
-                      <option value="">5</option>
-                    </select>
-                  </td>
-                </tr>
-              ))}
+                          setShowProductDetailsModal(true);
+                        }}
+                      >
+                        {product.name}
+                      </button>
+                    </td>
+                    <td className="text-center">
+                      {product.description.substring(0, 25) || product.name}...
+                    </td>
+                    <td className="text-center ">{product.part_number}</td>
+                    <td className="text-center ">$ {product.price}</td>
+                    <td className="text-center ">USD</td>
+
+                    <td className="text-center">
+                      <select
+                        name=""
+                        id=""
+                        className="form-control"
+                        onChange={(e) => {
+                          onChangeHandler(product, e);
+                        }}
+                      >
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

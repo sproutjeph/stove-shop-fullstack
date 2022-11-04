@@ -3,8 +3,10 @@ import cartReducer from "../featuers/cart/cartSlice";
 import authReducer from "../featuers/auth/authSlice";
 import modalReducer from "../featuers/modal/modalSlice";
 import kitReducer from "../featuers/stoveStaterkits/kitSlice";
+import productReducer from "../featuers/products/productSlice";
 export const store = configureStore({
   reducer: {
+    product: productReducer,
     cart: cartReducer,
     auth: authReducer,
     modal: modalReducer,
