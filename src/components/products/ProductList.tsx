@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppSelector } from "../../stores/hooks";
 import imgaeHolder from "../../assets/images/200x200.jpg";
@@ -10,10 +11,8 @@ import {
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 import { IProduct } from "../../utils/types";
-import React, { useState } from "react";
 
 const ProductList = ({ setShowProductDetailsModal }: any) => {
-  const [productQty, setProductQty] = useState("");
   const dispath = useAppDispatch();
   const [params, setParams] = useSearchParams();
 

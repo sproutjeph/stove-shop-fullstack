@@ -6,12 +6,14 @@ export interface CartState {
   cartItems: IProduct[];
   totalPrice: number;
   totalCartItems: number;
+  subscriptionFee: number;
 }
 
 const initialState: CartState = {
   cartItems: [],
   totalPrice: 0,
   totalCartItems: 0,
+  subscriptionFee: 59,
 };
 
 const cartSlice = createSlice({
@@ -77,6 +79,10 @@ const cartSlice = createSlice({
     clearCart: (cartState) => {
       cartState.cartItems = [];
     },
+
+    selectSubscription: (cartState, { payload }: PayloadAction<number>) => {
+      cartState.subscriptionFee = payload;
+    },
   },
 });
 
@@ -87,6 +93,7 @@ export const {
   calculateTotals,
   clearCart,
   removeItem,
+  selectSubscription,
 } = cartSlice.actions;
 export const selectCartState = (state: RootState) => state.cart;
 // export const selectCartItems = (state: RootState) => state.cart.cartItems;

@@ -1,8 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "../../components";
+import { useAppSelector } from "../../stores/hooks";
 const CheckOut = () => {
   const navigateTo = useNavigate();
+
+  const { cartItems, totalPrice, subscriptionFee } = useAppSelector(
+    (state) => state.cart
+  );
   return (
     <>
       <div className="px-4 md:px-16  my-8  flex justify-between">
@@ -97,20 +102,20 @@ const CheckOut = () => {
             <div className="md:mr-40 flex flex-col gap-4">
               <div className="flex gap-10 ">
                 <h2>Subtotal</h2>
-                <h2 className="ml-auto">$0.00</h2>
+                <h2 className="ml-auto">${totalPrice}</h2>
               </div>
               <div className="flex gap-10 ">
                 <h2>Shipping</h2>
                 <h2 className="ml-auto">$0.00</h2>
               </div>
               <div className="flex gap-10  ">
-                <h2>Tax</h2>
-                <h2 className="ml-auto">$0.00</h2>
+                <h2>Monthly Fee</h2>
+                <h2 className="ml-auto">${subscriptionFee}</h2>
               </div>
               <hr />
               <div className="flex gap-10 text-2xl tracking-wider font-extrabold">
                 <h2>Total</h2>
-                <h2 className="ml-auto">$0.00</h2>
+                <h2 className="ml-auto ">${totalPrice + subscriptionFee}</h2>
               </div>
             </div>
           </div>

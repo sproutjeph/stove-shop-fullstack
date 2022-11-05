@@ -12,7 +12,9 @@ import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 const CartPage = () => {
   const navigateTo = useNavigate();
   const dispath = useAppDispatch();
-  const { cartItems, totalPrice } = useAppSelector((state) => state.cart);
+  const { cartItems, totalPrice, subscriptionFee } = useAppSelector(
+    (state) => state.cart
+  );
 
   return (
     <>
@@ -23,7 +25,7 @@ const CartPage = () => {
         </div>
         <div className="flex flex-col items-center">
           <h2> monthly fee </h2>
-          <span>$0.0</span>
+          <span className="text-primary text-lg">${subscriptionFee}</span>
         </div>
         <div className="flex flex-col items-center">
           <h2>deposit fee </h2>
@@ -116,12 +118,12 @@ const CartPage = () => {
           <div className="grid grid-cols-2 gap-2 justify-center place-items-center text-lg border-slate-500 tracking-widest border-b-[1px] pb-4">
             <h2 className="">Subtotal</h2>
             <h2 className="text-green-500">$ {totalPrice}</h2>
-            <h2 className="">Tax</h2>
-            <h2 className="text-green-500">$ {30.0}</h2>
+            <h2 className="">Monthly Fee</h2>
+            <h2 className="text-green-500">$ {subscriptionFee}</h2>
           </div>
           <div className="flex justify-between text-black text-2xl mt-4">
             <h1 className="">Order Total :</h1>
-            <h1 className="">$ {totalPrice + 30}</h1>
+            <h1 className="">$ {totalPrice + subscriptionFee}</h1>
           </div>
         </div>
         <div className="flex">

@@ -2,6 +2,12 @@ import { IProduct } from "./types";
 import counterTopKit from "@/assets/images/counter-top-kit.jpg";
 import handheldKit from "@/assets/images/handheld-kit.jpg";
 import guestServiceKit from "@/assets/images/guest-service-kit.jpg";
+import {
+  TrophyIcon,
+  GiftIcon,
+  RocketLaunchIcon,
+  CheckBadgeIcon,
+} from "@heroicons/react/24/outline";
 
 interface IStarterKit {
   id: string;
@@ -265,6 +271,21 @@ export const products: IProduct[] = [
     category: "support",
     amount: 0,
   },
+  {
+    id: "8363c4dc-051c-d3d9-3270-62472aeddf4a",
+    name: "24/7 Enterprise Support",
+    description: "TBD BASED ON NEEDS/LEVEL \n ---",
+    part_number: "ENTSP",
+    type: "Service",
+    cost: "0",
+    cost_usdollar: "0",
+    currency_id: "-99",
+    price: "0",
+    price_usdollar: "0",
+    product_image: "",
+    category: "support",
+    amount: 0,
+  },
 
   {
     id: "eef120cb-4dae-7b73-4746-634d802d7962",
@@ -345,22 +366,6 @@ export const products: IProduct[] = [
   },
 
   {
-    id: "b592a3dc-8dc8-346e-2c6a-6352af6d6fe2",
-    name: "Additional Handheld License",
-    description: "",
-    part_number: "ADDLHNDLIC",
-    type: "Service",
-    cost: "15",
-    cost_usdollar: "15",
-    currency_id: "-99",
-    price: "20",
-    price_usdollar: "20",
-    product_image: "",
-    category: "support",
-    amount: 0,
-  },
-
-  {
     id: "92e10639-015c-94b9-7de0-634d802dab49",
     name: "Credit Promotion",
     description: "",
@@ -373,6 +378,55 @@ export const products: IProduct[] = [
     price_usdollar: "0",
     product_image: "",
     category: "support",
+    amount: 0,
+  },
+  // monthly subscription
+
+  {
+    id: "24f40c0f-e70e-7d6c-fef2-623c6f1376b6",
+    name: "STOVE STARTER Monthly Subscription",
+    description: "",
+    part_number: "TERMLIC",
+    type: "Software",
+    cost: "15",
+    cost_usdollar: "15",
+    currency_id: "-99",
+    price: "59",
+    price_usdollar: "59",
+    product_image: "GiftIcon",
+    category: "subscription",
+    amount: 0,
+  },
+
+  {
+    id: "f3d5ac84-5450-0369-ec55-6314e4b9373d",
+    name: "STOVE ULTIMATE Monthly Subscription",
+    description: "",
+    part_number: "TERMLIC",
+    type: "Service",
+    cost: "15",
+    cost_usdollar: "15",
+    currency_id: "-99",
+    price: "139",
+    price_usdollar: "139",
+    product_image: "TrophyIcon",
+    category: "subscription",
+    amount: 0,
+  },
+  {
+    id: "9bd90acd-bbe9-f8f0-c2d9-6314e4090f92",
+    name: "STOVE PROFESSIONAL Monthly Subscription",
+    description:
+      "Cloud Based POS\n Full Reporting\n Employee Time Tracking\n Scheduling\nOnline Ordering\n Payroll\n Kiosk Ordering\n Mobile Ordering and Checkout\n E-Mail Marketing\n Delivery Dispatch\n Reservations+\n 3rd Party Order Aggregation\n SMS Marketing\n Smart Ordering AI\n Gift Cards",
+    part_number: "TERMLIC",
+    type: "Service",
+    cost: "15",
+    cost_usdollar: "15",
+    currency_id: "-99",
+    price: "199",
+    price_usdollar: "199",
+    product_image: "RocketLaunchIcon",
+    category: "subscription",
     amount: 0,
   },
 ];
