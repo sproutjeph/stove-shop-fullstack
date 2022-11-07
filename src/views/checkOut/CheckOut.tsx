@@ -4,6 +4,8 @@ import { Image } from "../../components";
 import { useAppSelector } from "../../stores/hooks";
 const CheckOut = () => {
   const navigateTo = useNavigate();
+  //docusignSecretKey =  af9eb92a-6dac-444c-88ee-ef4165ae17aa
+  // integrationKey = 230e536c-e4d9-488e-aaf9-b4acf567217b
 
   const { cartItems, totalPrice, subscriptionFee } = useAppSelector(
     (state) => state.cart

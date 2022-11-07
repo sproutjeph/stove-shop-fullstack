@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
 import { useAppSelector } from "../../stores/hooks";
 import imgaeHolder from "../../assets/images/200x200.jpg";
@@ -24,6 +25,7 @@ const ProductList = ({ setShowProductDetailsModal }: any) => {
   ) {
     const qty = Number(e.target.value);
     dispath(addToCart({ cartItem, qty }));
+    toast(`${cartItem.name} Add to Cart`);
   }
 
   return (

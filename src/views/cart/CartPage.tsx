@@ -126,6 +126,7 @@ const CartPage = () => {
             <h1 className="">$ {totalPrice + subscriptionFee}</h1>
           </div>
         </div>
+
         <div className="flex">
           <div />
           <button
